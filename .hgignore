@@ -1,0 +1,6 @@
+e glob syntax.
+syntax: glob
+
+*.pyc
+*.db
+*~
