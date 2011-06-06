@@ -1,0 +1,28 @@
+body.profile #tab_profile a,
+body.notices #tab_notices a
+{
+}
+body.profile #tab_profile,
+body.profile_all #tab_profile,
+body.profile_yours #tab_profile,
+body.notices #tab_notices,
+body.lectures #tab_lectures,
+body.timetable #tab_timetable
+{
+	background: #BBCC99;	/*selected topnav tab*/
+    border-color: #666;
+}
+body.profile_all #subnav_profile_all,
+body.profile_yours #subnav_profile_yours,
+body.account_email #subnav_account_email,
+body.account_password #subnav_account_password,
+body.account_timezone #subnav_account_timezone,
+body.account_openid #subnav_account_openid,
+body.account_language #subnav_account_language
+{
+	color: #000;			/*selected subnav tab*/
+    background: #EB3800;
+    border: 1px solid #666;
+    border-bottom: none;
+	padding: 4px 9px; 	    /*decreased padding with 1px to compensate for border*/
+}
