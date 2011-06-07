@@ -1,6 +1,8 @@
 e glob syntax.
 syntax: glob
 
+^.settings/
+
 *.pyc
 *.db
 *.project
