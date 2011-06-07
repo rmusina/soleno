@@ -1,7 +1,3 @@
-body.profile #tab_profile a,
-body.notices #tab_notices a
-{
-}
 body.profile #tab_profile,
 body.profile_all #tab_profile,
 body.profile_yours #tab_profile,
@@ -18,10 +14,11 @@ body.account_email #subnav_account_email,
 body.account_password #subnav_account_password,
 body.account_timezone #subnav_account_timezone,
 body.account_openid #subnav_account_openid,
-body.account_language #subnav_account_language
+body.account_language #subnav_account_language,
+body.account_avatar #subnav_account_avatar
 {
 	color: #000;			/*selected subnav tab*/
-    background: #EB3800;
+    background: #AA8888;
     border: 1px solid #666;
     border-bottom: none;
 	padding: 4px 9px; 	    /*decreased padding with 1px to compensate for border*/

@@ -8,6 +8,7 @@ from django.utils.encoding import smart_unicode
 from django.utils.hashcompat import sha_constructor
 
 from pinax.core.utils import get_send_mail
+from django.contrib.comments import signals
 send_mail = get_send_mail()
 
 from django.contrib.auth import authenticate, login
@@ -56,6 +57,7 @@ class LoginForm(forms.Form):
             return True
         return False
 
+from account import signals
 
 class SignupForm(forms.Form):
     
@@ -75,6 +77,8 @@ class SignupForm(forms.Form):
             required = False,
             widget = forms.TextInput()
         )
+    
+    is_lecturer = forms.BooleanField(label=_("Are you a lecturer?"), required=False)
     
     confirmation_key = forms.CharField(max_length=40, required=False, widget=forms.HiddenInput())
     
@@ -97,7 +101,8 @@ class SignupForm(forms.Form):
         username = self.cleaned_data["username"]
         email = self.cleaned_data["email"]
         password = self.cleaned_data["password1"]
-        
+        is_lecturer_cleaned = self.cleaned_data["is_lecturer"]
+                
         if self.cleaned_data["confirmation_key"]:
             from friends.models import JoinInvitation # @@@ temporary fix for issue 93
             try:
@@ -113,12 +118,14 @@ class SignupForm(forms.Form):
         if confirmed:
             if email == join_invitation.contact.email:
                 new_user = User.objects.create_user(username, email, password)
+                
                 join_invitation.accept(new_user) # should go before creation of EmailAddress below
                 new_user.message_set.create(message=ugettext(u"Your email address has already been verified"))
                 # already verified so can just create
                 EmailAddress(user=new_user, email=email, verified=True, primary=True).save()
             else:
                 new_user = User.objects.create_user(username, "", password)
+                
                 join_invitation.accept(new_user) # should go before creation of EmailAddress below
                 if email:
                     new_user.message_set.create(message=ugettext(u"Confirmation email sent to %(email)s") % {'email': email})
@@ -129,12 +136,13 @@ class SignupForm(forms.Form):
                 new_user.message_set.create(message=ugettext(u"Confirmation email sent to %(email)s") % {'email': email})
                 EmailAddress.objects.add_email(new_user, email)
         
+        signals.user_created.send(sender=None, created_user=new_user, is_lecturer=is_lecturer_cleaned)       
+        
         if settings.ACCOUNT_EMAIL_VERIFICATION:
             new_user.is_active = False
             new_user.save()
                 
         return username, password # required for authenticate()
-
 
 class OpenIDSignupForm(forms.Form):
     username = forms.CharField(label="Username", max_length=30, widget=forms.TextInput())

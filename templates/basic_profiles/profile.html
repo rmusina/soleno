@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load uni_form %}
+{% load avatar_tags %}
 
 {% block head_title %}{% blocktrans %}Profile for {{ other_user }}{% endblocktrans %}{% endblock %}
 {% block body_class %}profile_yours{% endblock %}
@@ -11,26 +12,101 @@
     <div class="right_panel">
         {% include "basic_profiles/profile_right_panel.html" %}
     </div>
+    <div class="profile_wrapper">
+	    <div class="{% if other_user.get_profile.is_lecturer %}profile_lecturer_data{% else %}profile_student_data{% endif %}">
+	        {% if other_user.get_profile.name %}
+	            <h1>{% blocktrans %}Profile for <b>{{ other_user }}</b> {% endblocktrans %}</h1>
+	        {% else %}
+	            <h1>{% blocktrans %}Profile for <b>{{ other_user }}</b> {% endblocktrans %}</h1>
+	        {% endif %}
+	        
+	        <div class="avatar">
+	        	{% if is_me %}
+		        	<a href="/avatar/change/">
+		        		{% avatar other_user 150 %}
+		        	</a>
+		        {% else %}
+		        	{% avatar other_user 150 %}
+		        {% endif %}
+	        </div>
+	        
+	        <div class="profile_info">
+	            <p><b>{% trans "Name:" %}</b>{% if other_user.get_profile.name %} <span class="fn">{{ other_user.get_profile.name }}</span>{% else %} - {% endif %}</p>
+	            <p><b>{% trans "Faculty:" %}</b>{% if other_user.get_profile.specialization %} <span class="fn">{{ other_user.get_profile.specialization }}</span>{% else %} - {% endif %}</p>
+	            <p><b>{% trans "University:" %}</b>{% if other_user.get_profile.university %} <span class="fn">{{ other_user.get_profile.university }}</span>{% else %} - {% endif %}</p>
+	            <p><b>{% trans "Member Since:" %}</b> {{ other_user.date_joined.date }}</p>           
+	        </div>
+	                
+	        <div class="profile_info_extra">
+	        	{% if other_user.get_profile.fields_of_interest %}<p><b>{% trans "Fields of Interest:" %}</b><br/>{{ other_user.get_profile.fields_of_interest }}</p>{% endif %}
+	     		{% if other_user.get_profile.about %}<p><b>{% trans "About:" %}</b><br />{{ other_user.get_profile.about }}</p>{% endif %} 
+	        </div>
+	        
+	        {% if is_me %}
+	            <p><a href="{% url profile_edit %}">Edit profile</a></p>
+	        {% endif %}
+	        
+	    </div><!--/vcard-->
+	    
+	    {% if other_user.get_profile.is_lecturer %}
+	    <div class="profile_lecturer_notes">
+	    	<h2>{% blocktrans %} <b>{{ other_user }}</b>'s sessions: {% endblocktrans %}</h2>
+	    	<div class="profile_user_note_item">
+	    		  <a href="."><h3><b>Session title</b></h3></a>
+	    		  <h5><b>Created on:</b> 14-05-2011</h5>
+	    		  <h5><b>Participants:</b> 23 </h5>
+	    		  <p>
+	    		  Built from the ground up to support and simplify your development workflow, Kiln is a complete distributed version control system with branching and merging that really works, large binary file support, a fantastic code review system, detailed code search, a full JSON read/write API, 
+	    		  </p>  	  	
+	    	</div>
+	    	<div class="profile_user_note_item">
+	    		  <a href="."><h3><b>Session title</b></h3></a>
+	    		  <h5><b>Created on:</b> 14-05-2011</h5>
+	    		  <h5><b>Participants:</b> 23 </h5>
+	    		  <p>
+	    		  Small description of the studied curricula: Built from the ground up to support and simplify your development workflow, Kiln is a complete distributed version control system with branching and merging that really works, large binary file support, a fantastic code review system, detailed code search, a full JSON read/write API, 
+	    		  </p>  	 	
+	    	</div>
+	    	<div class="profile_user_note_item">
+	    		  <a href="."><h3><b>Session title</b></h3></a>
+	    		  <h5><b>Created on:</b> 14-05-2011</h5>
+	    		  <h5><b>Participants:</b> 23 </h5>
+	    		  <p>
+	    		  Built from the ground up to support and simplify your development workflow, Kiln is a complete distributed version control system with branching and merging that really works, large binary file support, a fantastic code review system, detailed code search, a full JSON read/write API, 
+	    		  </p>  	  	
+	    	</div>
+	    </div>
+	    {% else %}	
+	    <div class="profile_student_notes">
+	    	<h2>{% blocktrans %} <b>{{ other_user }}</b>'s notes: {% endblocktrans %}</h2>
+	    	<div class="profile_user_note_item">
+	    		  <a href="."><h3><b>Student title for note</b></h3></a>
+	    		  <h5><b>LastModified:</b> 14-05-2011</h5>
+	    		  <h5><b>Lecturer:</b> <a href=".">Hans Rosental</a></h5>
+	    		  <p>
+	    		  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum...
+	    		  </p>  	  	
+	    	</div>
+	    	<div class="profile_user_note_item">
+	    		  <a href="."><h3><b>Student title for note</b></h3></a>
+	    		  <h5><b>LastModified:</b> 14-05-2011</h5>
+	    		  <h5><b>Lecturer:</b> <a href=".">Hans Rosental</a></h5>
+	    		  <p>
+	    		  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum...
+	    		  </p>  	  	
+	    	</div>
+	    	<div class="profile_user_note_item">
+	    		  <a href="."><h3><b>Student title for note</b></h3></a>
+	    		  <h5><b>LastModified:</b> 14-05-2011</h5>
+	    		  <h5><b>Lecturer:</b> <a href=".">Hans Rosental</a></h5>
+	    		  <p>
+	    		  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum...
+	    		  </p>  	  	
+	    	</div>
+	    </div>
+	    {% endif %}
+    </div>
     
-    <div class="vcard">
-        {% if other_user.get_profile.name %}
-            <h1>{% blocktrans %}Profile for <span class="nickname">{{ other_user }}</span>{% endblocktrans %}</h1>
-        {% else %}
-            <h1>{% blocktrans %}Profile for <span class="fn nickname">{{ other_user }}</span>{% endblocktrans %}</h1>
-        {% endif %}
-        
-        <div class="profile_info">
-            {% if other_user.get_profile.name %}<p><b>{% trans "Name" %}</b>: <span class="fn">{{ other_user.get_profile.name }}</span></p>{% endif %}
-            {% if other_user.get_profile.about %}<p><b>{% trans "About" %}</b>: {{ other_user.get_profile.about }}</p>{% endif %}
-            {% if other_user.get_profile.location%}<p><b>{% trans "Location" %}</b>: {{ other_user.get_profile.location }}</p>{% endif %}
-            {% if other_user.get_profile.website %}<p><b>{% trans "Website" %}</b>: <a class="url" href="{{ other_user.get_profile.website }}">{{ other_user.get_profile.website }}</a></p>{% endif %}
-        </div>
-        
-        {% if is_me %}
-            <p><a href="{% url profile_edit %}" rel="facebox">Edit profile</a></p>
-        {% endif %}
-        
-    </div><!--/vcard-->
 {% endblock %}
 
 

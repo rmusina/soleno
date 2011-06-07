@@ -19,12 +19,13 @@
         {% endif %}
     </form>
     
+    <div id="profiles_users">
     {% if users %}
         <p>{% trans "Order by:" %}
             {% ifequal order 'date' %}
-                <a href="{% url profile_list %}?order=name">{% trans "Name" %} &uarr;</a>
+                <a href="{% url profile_list %}?order=name">{% trans "Name" %} </a>
             {% else %}
-                <a href="{% url profile_list %}?order=date">{% trans "Date" %} &darr;</a>
+                <a href="{% url profile_list %}?order=date">{% trans "Date" %} </a>
             {% endifequal %}
         </p>
         
@@ -51,4 +52,5 @@
        {% else %}
            <p>No profile were found.</p>
       {% endif %}
+     </div>
 {% endblock %}
