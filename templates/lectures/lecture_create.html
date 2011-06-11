@@ -1,0 +1,30 @@
+{% extends "lectures/base.html" %}
+{% load i18n %}
+{% load uni_form %}
+
+{% block head_title %}{% blocktrans %}Create Lecture{% endblocktrans %}{% endblock %}
+{% block body_class %}lecture_create{% endblock %}
+
+{% block extra_head %}
+	{{ form.media }}
+{% endblock %}
+
+{% block body %}
+	<h1>{% trans "Create Lecture" %}</h1>
+	
+	{% if is_lecturer %}	
+	<form class="uniForm" method="POST" action="{% url lecture_create %}">
+	    <fieldset class="inlineLabels">
+	        {{ form|as_uni_form }}
+	        <br/>
+	        <div class="form_block">
+	            <input type="submit" value="create" />
+	            or <a href="{% url lecture_list %}">cancel</a>
+	        </div>
+	    </fieldset>
+	</form>
+	{% else %}
+	<h2>Sorry, only lecturers can create new lectures.</h2>
+	{% endif %}
+{% endblock %}
+

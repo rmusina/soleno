@@ -1,0 +1,16 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block body_class %}lectures{% endblock %}
+
+{% block subnav %}
+    {% if user.is_authenticated %}
+        <ul>
+            <li><a id="subnav_lecture_create" href="{% url lecture_create %} ">{% trans "Create Lecture" %}</a></li>
+            <li><a id="subnav_lecture_list"  href="{% url lecture_list %} ">{% trans "All Lectures" %}</a></li>
+        </ul>
+    {% else %}
+        &nbsp;
+    {% endif %}
+{% endblock %}

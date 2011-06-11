@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     'about',
     'django.contrib.admin',
     'avatar',
+    'lectures',
 
 )
 

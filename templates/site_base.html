@@ -23,7 +23,7 @@
     {% if user.is_authenticated %}
 	        <ul class="tabs">
 	        {% spaceless %}
-	        	<li><a id="tab_lectures" href=".">{% trans "Lectures" %}</a></li>
+	        	<li><a id="tab_lectures" href="{% url lecture_list %}">{% trans "Lectures" %}</a></li>
 	            <li><a id="tab_profile"  href="{% url profile_detail user %}">{% trans "Profiles" %}</a></li>
 	            <li><a id="tab_timetable"  href=".">{% trans "Timetable" %}</a></li>
 	            <li><a id="tab_notices"  href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} ({{ notice_unseen_count }}){% endif %}</a></li>

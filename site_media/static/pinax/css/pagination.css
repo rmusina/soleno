@@ -1,4 +1,5 @@
 .pagination {
+	clear: both;
     margin: 10px 0;
 }
 .pagination .disabled {

@@ -1,0 +1,39 @@
+{% extends "lectures/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% blocktrans %} Lecture session {% endblocktrans %}{{ lecture.id }}{% endblock %}
+{% block extra_head_base %}
+	<link rel="stylesheet" href="{{ STATIC_URL }}lectures/lecture_session.css" />
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}CLEditor/jquery.cleditor.css" />
+	<script  type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>    
+{% endblock %}
+
+{% block body_class %}lecture_session{% endblock %}
+
+{% block body %}
+	<div id="lecture_session_slider">
+		<h1>{% trans "Lecture session " %} {{ lecture.id }} {% trans " updates" %}</h1>
+	</div>
+	<a id="lecture_session_slider_trigger" href="#">Session Updates</a>
+	<div id="lecture_session_container">
+		
+		<div class="notes_container">
+			<div class="notes_container_header">
+				Your notes
+			</div>
+			<form method="post" style="height: 100%; margin-bottom:3px; margin-right: 4px;" action=".">	
+				<textarea id="note_text" name="note_text"></textarea>
+			</form>	
+		</div>
+	</div>
+{% endblock %}
+
+{% block extra_body %}
+	<!-- <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> -->
+	<!-- <script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script> -->
+	<script type="text/javascript" src="{{ STATIC_URL }}CLEditor/jquery.cleditor.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}CLEditor/jquery.cleditor.table.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}lectures/lecture_session.js"></script>
+{% endblock %}

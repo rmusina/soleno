@@ -1,0 +1,12 @@
+#slider_container{
+	width:45%;
+	float:left;
+}
+
+#current_value {
+	min-height:25px;
+	font-weight:bold;
+	font-size:16px;
+	color:#666;
+}
+	

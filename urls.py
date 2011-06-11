@@ -32,6 +32,7 @@ urlpatterns = patterns('',
     
     (r'^admin/(.*)', admin.site.root),
     (r'^avatar/', include('avatar.urls')),
+    (r'^lectures/', include('lectures.urls')),
 )
 
 if settings.SERVE_MEDIA:
