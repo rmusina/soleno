@@ -3,7 +3,10 @@ body.profile_all #tab_profile,
 body.profile_yours #tab_profile,
 body.notices #tab_notices,
 body.lectures #tab_lectures,
-body.timetable #tab_timetable
+body.lecture_list #tab_lectures,
+body.lecture_create #tab_lectures,
+body.lecture_session #tab_lectures, 
+body.timetable #tab_timetable 
 {
 	background: #BBCC99;	/*selected topnav tab*/
     border-color: #666;
@@ -15,7 +18,9 @@ body.account_password #subnav_account_password,
 body.account_timezone #subnav_account_timezone,
 body.account_openid #subnav_account_openid,
 body.account_language #subnav_account_language,
-body.account_avatar #subnav_account_avatar
+body.account_avatar #subnav_account_avatar,
+body.lecture_list #subnav_lecture_list,
+body.lecture_create #subnav_lecture_create
 {
 	color: #000;			/*selected subnav tab*/
     background: #AA8888;

@@ -4,7 +4,7 @@ html, body {
     height: 100%;
 }
 body {
-    background: #666 url(../images/texture.png) repeat scroll 0px 0px;
+    background: #666 url(../../images/texture.png) repeat scroll 0px 0px;
     margin: 0;
     color: #333333;
     font-family:  Verdana, sans-serif;
@@ -78,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 #footer {
 	clear: both;
 	height: 4em;    
-	background: #666 url(../images/bg_texture_dark.png) repeat scroll 0px 0px;
+	background: #666 url(../../images/bg_texture_dark.png) repeat scroll 0px 0px;
     color: #999; /* footer text colour */
     padding-top: 10px;
     text-align: center;
@@ -122,7 +122,7 @@ h1, h2, h3, h4, h5, h6 {
 /* HEADER */
 
 #tabhead {
-    background: #035 url('../images/bg_texture_dark.png') left top repeat-x;
+    background: #035 url('../../images/bg_texture_dark.png') left top repeat-x;
     position: relative;
 }
 #tabhead .logo {
@@ -153,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #subnav {
     padding: 0;
-    background: #666 url(../images/texture.png) repeat scroll 0px 0px;
+    background: #666 url(../../images/texture.png) repeat scroll 0px 0px;
 	border-bottom: solid thin; 
    	float: left;
    	position:relative;
@@ -377,6 +377,36 @@ div.profile_item a.profile_item_student{
 
 h2.join_date {
 	clear: both;
+}
+
+/* PAGINATION */
+
+.pagination {
+	clear: both;
+	padding-top: 20px;
+    margin: 10px 0;
+}
+
+.pagination .disabled {
+    padding: 3px;
+    color: #999;
+    border: 1px solid #CCC;
+}
+.pagination .current {
+    padding: 3px;
+    color: #FFF;
+    border: 1px solid #CCC;
+    background: #3E4C22;
+}
+.pagination a {
+    padding: 3px;
+    text-decoration: none;
+    border: 1px solid #CCC;
+    color: #444;
+    background: #BBCC99;
+}
+.pagination a:hover {
+    background: #BBCC99;
 }
 
 /* EXTRAS TO CLEAN UP */

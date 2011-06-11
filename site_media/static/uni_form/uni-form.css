@@ -20,7 +20,7 @@
       /* .inlineLabel is used for inputs within labels - checkboxes and radio buttons */
       .uniForm .inlineLabel input,
       .uniForm .inlineLabels .inlineLabel input,
-      .uniForm .blockLabels .inlineLabel input{ float: left; margin: 0 .4em 0 0; }
+      .uniForm .blockLabels .inlineLabel input{ margin: 0 .4em 0 0; }
         .uniForm .inlineLabel span{ float: left; width: 90%; }
         
 /* ------------------------------------------------------------------------------ */
