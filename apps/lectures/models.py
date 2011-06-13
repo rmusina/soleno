@@ -22,3 +22,13 @@ class Lecture(models.Model):
     class Meta:
         verbose_name = _('lecture')
         verbose_name_plural = _('lectures')
+        
+class NotesUpdate(models.Model):
+    lecture = models.ForeignKey(Lecture, verbose_name=_('lecture'))
+    created_by = models.ForeignKey(User, verbose_name=_('created by'))
+    text = models.TextField(_('note text'), max_length=5000)
+    saved_at = models.DateTimeField(_('saved at'), auto_now_add=True)
+        
+    class Meta:
+        verbose_name = _('Notes Update')
+        verbose_name_plural = _('Notes Updates')

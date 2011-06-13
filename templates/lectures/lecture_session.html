@@ -1,6 +1,7 @@
 {% extends "lectures/base.html" %}
 
 {% load i18n %}
+{% load avatar_tags %}
 
 {% block head_title %}{% blocktrans %} Lecture session {% endblocktrans %}{{ lecture.id }}{% endblock %}
 {% block extra_head_base %}
@@ -14,18 +15,33 @@
 
 {% block body %}
 	<div id="lecture_session_slider">
-		<h1>{% trans "Lecture session " %} {{ lecture.id }} {% trans " updates" %}</h1>
+		<div id="lecture_id"> <h1>Id: <b>{{ lecture.id }}</b><h1></div>
+		<h1> {{ lecture.description }} </h1>
+		<ul class="session_updates_container">
+			{% for update in updates_list %}
+				<li class="session_update">
+					<input type="hidden" name="session_update_id" value="{{ update.id }}"/>
+					{% avatar update.created_by 32 %}
+					<div class="user_data">
+						<p><a href=".">{{ update.created_by }}</a></p>
+						<p>4.6/5</p>
+					</div>
+					<div class="update_time">
+						<p>{{ update.saved_at|date:"H:m:s" }}</p>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
 	</div>
 	<a id="lecture_session_slider_trigger" href="#">Session Updates</a>
 	<div id="lecture_session_container">
-		
 		<div class="notes_container">
 			<div class="notes_container_header">
 				Your notes
 			</div>
-			<form method="post" style="height: 100%; margin-bottom:3px; margin-right: 4px;" action=".">	
-				<textarea id="note_text" name="note_text"></textarea>
-			</form>	
+			<div class="textarea_div">	
+				<textarea class="note_text"></textarea>
+			</div>	
 		</div>
 	</div>
 {% endblock %}
@@ -35,5 +51,6 @@
 	<!-- <script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script> -->
 	<script type="text/javascript" src="{{ STATIC_URL }}CLEditor/jquery.cleditor.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}CLEditor/jquery.cleditor.table.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}CLEditor/jquery.cleditor.save.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}lectures/lecture_session.js"></script>
 {% endblock %}
