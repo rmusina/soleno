@@ -2,44 +2,51 @@ $(document).ready(function(){
     $("#lecture_session_slider_trigger").click(function(){
         $("#lecture_session_slider").toggle("fast");
         $(this).toggleClass("active");
+    	scrollToBottom($("#session_updates_container"));
         return false;
     });
     	
 	$.cleditor.buttons.save.buttonClick = function(e, data){
-		postEditorData(data.editor.$area[0].value);
+		//postEditorData(data.editor.$area[0].value);
+		var text = data.editor.$area[0].value.replace(/(<([^>]+)>)/ig,"");
+		updateKeywords(text);
 		return false;
 	};
 	
 	function postEditorData(editorData) {
-		$.post(".", { data: editorData }, function(data) {
-			alert(data);
+		$.post("./new", { 
+			data: editorData
+		}, function(data) {
+			var currentTime = new Date();
+			$("#note_status").text(data + " " + currentTime.getHours() + ":" + currentTime.getMinutes());
 		});
 	}
+	
+	updater.poll();
 });
 
-$(function() {
-	
-	addControlsToNotesContainer(".notes_container", ".note_text");
-	
-	$( ".session_update" ).draggable({
-		helper: "clone",
-		zIndex: 101,
-		scroll: false
-	});
-	
-	$("#session_updates_container").sortable({
-				
-	});
-	
-	$("#lecture_session_container").droppable({
-		greedy: true,
-		activeClass: "hover_active ",
-		accept: ".session_update",
-		drop: function( event, ui ) {
-			generateWindowAndPopulateTextArea(event, ui);
-			ui.draggable.hide('slow');
-		}
-	});
+$(function() {	
+	function initializeDraggableDropableCanvas() {
+		$( ".session_update" ).draggable({
+			helper: "clone",
+			zIndex: 101,
+			scroll: false
+		});
+		
+		$("#session_updates_container").sortable({
+					
+		});
+		
+		$("#lecture_session_container").droppable({
+			greedy: true,
+			activeClass: "hover_active ",
+			accept: ".session_update",
+			drop: function( event, ui ) {
+				generateWindowAndPopulateTextArea(event, ui);
+				ui.draggable.hide('slow');
+			}
+		});
+	}
 	
 	function generateWindowAndPopulateTextArea(event, ui) {
 		var updateId = $(ui.draggable).children("input").val();
@@ -61,6 +68,10 @@ $(function() {
 		});
 	}
 	
+	function convertNameToIdReference(elementIdName) {
+		return "#" + elementIdName;
+	}
+		
 	function createNoteWindow(updateId, 
 							  updateAuthor, 
 							  updateTime,
@@ -68,27 +79,31 @@ $(function() {
 							  positionTop, 
 							  ui) {
 		
-		var notes_container_id = "notes_container_" + updateId;
+		var notesContainerId = "notes_container_" + updateId;
+		var noteTextId = "note_text_" + updateId;
 		
-		var notes_container_div = "<div id=\"" + notes_container_id +  "\" class=\"notes_container\"> " +
+		var notes_container_div = "<div id=\"" + notesContainerId +  "\" class=\"notes_container\"> " +
 								  		"<div class=\"notes_container_header\">" +
 								  			"<div class=\"notes_container_title\">" + updateAuthor + "'s notes saved at " + updateTime + "</div>" +
 								  			"<a class=\"notes_container_close_btn\" href=\"#\">x</a>" +
 								  			"<div class=\"notes_container_clearer\"/>" +
 								  		"</div>" +
 									  	"<div class=\"textarea_div\">" +
-									  		"<textarea id=\"note_text_" + updateId + "\" class=\"note_text\"></textarea>" +
+									  		"<textarea id=\"" + noteTextId + "\" class=\"note_text\"></textarea>" +
 										"</div>" +
 								  "</div>";
 		
 		$("#lecture_session_container").append(notes_container_div).show("slow");
 		
-		$("#" + notes_container_id + " .notes_container_header a").bind("click", function(){
-			$("#" + notes_container_id).remove();
+		var notesContainerIdReference = convertNameToIdReference(notesContainerId);
+		var notesTextIdReference = convertNameToIdReference(noteTextId);
+				
+		addControlsToNotesContainer(notesContainerIdReference, notesTextIdReference, positionLeft, positionTop, false);
+		
+		$(notesContainerIdReference + " .notes_container_header a").bind("click", function(){
+			$('div').remove(notesContainerIdReference);
 			ui.draggable.show('slow');
 		});
-		
-		addControlsToNotesContainer("#notes_container_" + updateId,  "#note_text_" + updateId, positionLeft, positionTop, false);
 	}
 	
 	function addControlsToNotesContainer(noteContainerId, 
@@ -154,7 +169,139 @@ $(function() {
 	    	(allowSave ? "| save" : "")
 	    });
 	}
+	
+	function addToolboxAccordionContainer() {
+		$("#toolbox_container").draggable({
+			handle: ".notes_container_header",
+			containment:"#lecture_session_container",
+			scroll: false,
+			iframeFix: true,
+			stack: "#lecture_session_container div"
+		}).resizable({
+			minWidth: 300,
+			minHeight: 400,
+			containment:"#lecture_session_container",
+			scroll: false,
+			resize: function(event, ui) {
+				$( "#toolbox_accordion" ).accordion( "resize" );
+			}
+		}).position({
+		    "my": "right top",
+		    "at": "right top",
+		    "offset": "0 30",
+		    "of": $("#lecture_session_container")
+		});;
+		
+		$("#toolbox_accordion").accordion({
+			fillSpace: true
+		});
+	}
+	
+	function getKeyTerms(text) {
+		
+	}
+	
+	function getRepetitions(text) {
+		var sentences = text.split();
+	}
+	
+	addControlsToNotesContainer(".notes_container", ".note_text");
+	
+	addToolboxAccordionContainer();
+	
+	initializeDraggableDropableCanvas();
 });
 
 
+/* comet connection related stuff */
 
+function addUpdateToSidebar(update) {
+	
+	var update_li = "<li class=\"session_update ui-draggable\">" + 
+						"<input type=\"hidden\" name=\"session_update_id\" value=\"" + update.id + "\"/>" + 
+						update.created_by_avatar_src +
+						"<div class=\"user_data\">" +
+							"<p><a href=\".\">" + update.created_by_username + "</a></p>" +
+							"<p>4.6/5</p> " +
+						"</div>" + 
+						"<div class=\"update_time\">" + 
+							"<p>" + update.saved_at + "</p>" +
+						"</div>" + 
+					"</li>";
+	
+	$("#session_updates_container").append(update_li).show('slow');
+	
+	scrollToBottom($("#session_updates_container"));	
+} 
+
+function scrollToBottom(container) {
+	container.animate({
+		scrollTop: container[0].scrollHeight - container.height()
+	});
+}
+
+var updater = {
+	errorSleepTime: 500,
+	
+	clientId: -1,
+
+	poll: function() {
+        $.ajax({url: "./updates", 
+        		type: "POST", 
+        		dataType: "text",
+                data: {
+                	clientId: -1,
+                }, 
+                success: updater.onSuccess,
+                error: updater.onError});
+    },
+
+    onSuccess: function(response) {
+    	try {
+            updater.newUpdates(eval("(" + response + ")"));
+        } catch (e) {
+            updater.onError();
+            return;
+        }
+        updater.errorSleepTime = 500;
+        window.setTimeout(updater.poll, 0);
+    },
+
+    onError: function(response) {
+        updater.errorSleepTime *= 2;
+        console.log("Poll error; sleeping for", updater.errorSleepTime, "ms");
+        window.setTimeout(updater.poll, updater.errorSleepTime);
+    },
+
+    newUpdates: function(response) {
+    	if (!response.updates) return;
+    	
+        var updates = response.updates;
+        
+        updater.lastMessageId = updates[updates.length - 1].id;
+        //console.log(updates.length, "new messages, lastMessageId:", updater.lastMessageId);
+        
+        for (var i = 0; i < updates.length; i++) {
+            updater.showUpdate(updates[i]);
+        }
+    },
+
+    showUpdate: function(update) {
+    	/*var existing = $("#session_update input").find("input[type=hidden]").val(update.id).select(); // not sure if working
+        if (existing.length > 0) return;*/
+        
+        //add to sidebar
+        addUpdateToSidebar(update);
+    }    
+}
+
+/* keyword finding stuff */
+
+function updateKeywords(text) {
+	var keyterms = getKeyTerms(text);
+	
+	$("#keyterms_container").html("");
+	for (var key in keyterms.value) {
+		$("#keyterms_container").append("<li>" + key + " " + keyterms.value[key] + "</li>");
+    }
+}

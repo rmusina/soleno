@@ -3,11 +3,10 @@
 	margin-right: 0;
 }
 
-
 /* lecture slider related stuff */
 
 #lecture_session_slider {
-	z-index:100;
+	z-index:999;
 	position: absolute;
 	left: 0;
 	display: none;
@@ -43,7 +42,7 @@
 }
 
 #lecture_session_slider_trigger {
-	z-index:100;
+	z-index:999;
 	position: absolute;
 	text-decoration: none;
 	left: 0;
@@ -69,7 +68,7 @@
 	background:#C15C00;
 }
 
-.session_updates_container {
+#session_updates_container {
 	list-style: none;
 	padding-left: 5px;
 	height: 85%;
@@ -124,8 +123,10 @@
 	background: #BBCC99;
 }
 
-.notes_container {
+.notes_container,
+.accordion_container {
 	position: absolute;
+	z-index: 10;
 	width: 400px;
 	height: 300px;
 	border: 1px solid #666; 
@@ -136,6 +137,12 @@
 	padding: 3px;
 	padding-bottom:10px;
 	background: #666 url(../images/texture.png) repeat scroll 0px 0px;
+}
+
+.accordion_container {
+	width: 300px;
+	height: 400px;
+	padding-bottom: 45px;
 }
 
 .notes_container .textarea_div{

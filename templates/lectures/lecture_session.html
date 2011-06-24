@@ -16,8 +16,8 @@
 {% block body %}
 	<div id="lecture_session_slider">
 		<div id="lecture_id"> <h1>Id: <b>{{ lecture.id }}</b><h1></div>
-		<h1> {{ lecture.description }} </h1>
-		<ul class="session_updates_container">
+		<h1> {{ lecture.title }} </h1>
+		<ul id="session_updates_container">
 			{% for update in updates_list %}
 				<li class="session_update">
 					<input type="hidden" name="session_update_id" value="{{ update.id }}"/>
@@ -33,6 +33,7 @@
 			{% endfor %}
 		</ul>
 	</div>
+	
 	<a id="lecture_session_slider_trigger" href="#">Session Updates</a>
 	<div id="lecture_session_container">
 		<div class="notes_container">
@@ -41,7 +42,31 @@
 			</div>
 			<div class="textarea_div">	
 				<textarea class="note_text"></textarea>
-			</div>	
+				<div id="note_status">
+					
+				</div>
+			</div>				
+		</div>
+	</div>
+	
+	<div id="toolbox_container" class="accordion_container">
+		<div class="notes_container_header">
+			Content Toolbox
+		</div>
+		<div style="height:100%; width:100%;">
+			<div id="toolbox_accordion">
+				<h3><a href="#">Key-Terms</a></h3>
+				<div>
+					<ul id="keyterms_container">
+					</ul>
+				</div>
+				<h3><a href="#">Nopsa Database</a></h3>
+				<div>
+				</div>
+				<h3><a href="#">Wikipedia</a></h3>
+				<div>
+				</div>
+			</div>
 		</div>
 	</div>
 {% endblock %}
@@ -52,5 +77,8 @@
 	<script type="text/javascript" src="{{ STATIC_URL }}CLEditor/jquery.cleditor.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}CLEditor/jquery.cleditor.table.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}CLEditor/jquery.cleditor.save.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}lectures/jspos/POSTagger.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}lectures/jspos/lexicon.js_"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}lectures/keyword_finding.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}lectures/lecture_session.js"></script>
 {% endblock %}
