@@ -5,6 +5,8 @@ urlpatterns = patterns('',
     url(r'^create/$', 'lectures.views.lecture_create', name='lecture_create'),               
     url(r'^lecture/(?P<lecture_id>[\w\._-]+)/$', 'lectures.views.lecture_detail', name='lecture_detail'),
     url(r'^lecture/(?P<lecture_id>[\w\._-]+)/session/$', 'lectures.views.lecture_session', name='lecture_session'),
+    url(r'^lecture/(?P<lecture_id>[\w\._-]+)/session/new$', 'lectures.views.lecture_session_new', name='lecture_session_new'),
+    url(r'^lecture/(?P<lecture_id>[\w\._-]+)/session/updates$', 'lectures.views.lecture_session_updates', name='lecture_session_updates'),
     #url(r'^lecture/(?P<lecture_hash>[\w\._-]+)/notes/(?P<username>[\w\._-]+)$', '', name='lecture_session'),
     #url(r'^lecture/(?P<lecture_hash>[\w\._-]+)/featured$', '', name='lecture_session'),  
 )
