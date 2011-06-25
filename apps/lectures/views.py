@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirec
 
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.utils import simplejson
 
 from lectures.forms import LectureCreateForm
 from lectures.models import Lecture, NotesUpdate
@@ -14,6 +15,8 @@ from django.http import Http404
 
 import tornado.web
 from django_tornado.decorator import asynchronous
+
+from nltk.corpus import wordnet as wn
 
 import datetime
 
@@ -73,6 +76,29 @@ class UpdatesController():
 updatesController = UpdatesController()
 
 @login_required
+def lecture_session(request, lecture_id=None, template_name="lectures/lecture_session.html"):
+    try:
+        current_lecture = Lecture.objects.get(id=lecture_id)
+    except:
+        raise Http404
+    
+    if request.is_ajax():
+        if request.method == 'GET':
+            update_id = request.GET.get("id", None)
+            requested_update = NotesUpdate.objects.get(id=update_id)           
+            
+            if requested_update is not None:
+                return HttpResponse(requested_update.text)
+            else:
+                return HttpResponse("There are no user notes with your specified id.")
+                
+    return render_to_response(template_name, {
+                                    'lecture': current_lecture,
+                                    'updates_list': NotesUpdate.objects.filter(lecture=current_lecture).select_related('created_by', 'saved_at')
+                              },                              
+                              context_instance=RequestContext(request))
+
+@login_required
 def lecture_session_new(request, lecture_id):
     print "new " + lecture_id
     
@@ -122,25 +148,61 @@ def lecture_session_updates(request, handler, lecture_id=None):
         listenerId = request.POST.get("listenerId", None)
         updatesController.wait_for_updates(handler.async_callback(new_updates_callback), listenerId=listenerId)
 
+def get_similarity_rating(word1, pos1, word2, pos2):
+	print "similarity for " + word1 + " " + word2 
+	
+	try:
+		word1_synset = wn.synsets(word1, pos=pos1.lower())
+		word2_synset = wn.synsets(word2, pos=pos2.lower())
+						
+		return word1_synset[0].lch_similarity(word2_synset[0])
+	except:
+		return -1
+
+def process_keywords(occurrences, parts_of_speech):
+	words = []
+	similarity_ratings = {}
+
+	for (expression, occurrence) in occurrences.iteritems():
+		words = expression.split(" ")
+		
+		max_rating = 0
+
+		for i in range(len(words) - 1):
+			for j in range(i+1, len(words)):
+				rating = get_similarity_rating(words[i], 
+											   parts_of_speech[words[i]], 
+											   words[j],
+											   parts_of_speech[words[j]])
+				if rating > max_rating:
+					max_rating = rating
+
+		similarity_ratings[expression] = max_rating
+	
+	return similarity_ratings
+			
+
 @login_required
-def lecture_session(request, lecture_id, template_name="lectures/lecture_session.html"):
+def lecture_session_keywords(request, lecture_id=None):
     try:
         current_lecture = Lecture.objects.get(id=lecture_id)
     except:
-        raise Http404
+        raise Http404    
     
-    if request.is_ajax():
-        if request.method == 'GET':
-            update_id = request.GET.get("id", None)
-            requested_update = NotesUpdate.objects.get(id=update_id)           
+    if request.is_ajax() and request.method == 'POST':
+        occurrences = simplejson.loads(request.POST.get("occurrences", None))
+        parts_of_speech = simplejson.loads(request.POST.get("parts_of_speech", None))
+        
+        print parts_of_speech
+        print occurrences
+
+        if occurrences is not None and parts_of_speech is not None:
+			similarity_ratings = process_keywords(occurrences, parts_of_speech)
             
-            if requested_update is not None:
-                return HttpResponse(requested_update.text)
-            else:
-                return HttpResponse("There are no user notes with your specified id.")
-                
-    return render_to_response(template_name, {
-                                    'lecture': current_lecture,
-                                    'updates_list': NotesUpdate.objects.filter(lecture=current_lecture).select_related('created_by', 'saved_at')
-                              },                              
-                              context_instance=RequestContext(request))
+			return HttpResponse(simplejson.dumps(similarity_ratings))        
+        else:
+        	return HttpResponseBadRequest()
+    
+    raise Http404
+
+   

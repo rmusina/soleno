@@ -23,6 +23,10 @@ class Lecture(models.Model):
         verbose_name = _('lecture')
         verbose_name_plural = _('lectures')
         
+class LectureKeywords(models.Model):
+    lecture = models.ForeignKey(Lecture, verbose_name=_('lecture'))
+    keyword = models.TextField(_('keyword'))        
+        
 class NotesUpdate(models.Model):
     lecture = models.ForeignKey(Lecture, verbose_name=_('lecture'))
     created_by = models.ForeignKey(User, verbose_name=_('created by'))
