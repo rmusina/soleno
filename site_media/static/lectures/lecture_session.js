@@ -279,7 +279,6 @@ var updater = {
         var updates = response.updates;
         
         updater.lastMessageId = updates[updates.length - 1].id;
-        //console.log(updates.length, "new messages, lastMessageId:", updater.lastMessageId);
         
         for (var i = 0; i < updates.length; i++) {
             updater.showUpdate(updates[i]);
@@ -299,9 +298,22 @@ var updater = {
 
 function updateKeywords(text) {
 	var keyterms = getKeyTerms(text);
-	
-	$("#keyterms_container").html("");
-	for (var key in keyterms.value) {
-		$("#keyterms_container").append("<li>" + key + " " + keyterms.value[key] + "</li>");
-    }
+
+	$.post("./keywords", {
+			occurrences: JSON.stringify(keyterms.value),
+			parts_of_speech: JSON.stringify(keyterms.POS),
+		}, 
+		function(response) {
+			$("#keyterms_container").html("");
+			var responseJSON = JSON.parse(response);
+			
+			for (var key in responseJSON) {
+				if (responseJSON.hasOwnProperty(key)) {
+					$("#keyterms_container").append("<li>" + key + " " + responseJSON[key] + "</li>");
+				}
+		    }
+		})
+		.error(function(response) {
+			alert("The server was unable to process your request. It might be malformed");
+		});
 }

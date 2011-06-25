@@ -1,0 +1,421 @@
+Downloading/unpacking nltk
+  Getting page http://pypi.python.org/simple/nltk
+  URLs to search for versions for nltk:
+  * http://pypi.python.org/simple/nltk/
+  Getting page http://nltk.sf.net/
+  Could not fetch URL http://nltk.sf.net/ (from http://pypi.python.org/simple/nltk/): HTTP Error 500: Internal Server Error
+  Will skip URL http://nltk.sf.net/ when looking for download links for nltk
+  Getting page http://www.nltk.org/
+  Getting page http://nltk.org/
+  Getting page http://www.nltk.org/download
+  Analyzing links from page http://pypi.python.org/simple/nltk/
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b5.tar.gz#md5=01bafb1c5b823e7e262b011499fdfe05 (from http://pypi.python.org/simple/nltk/), version: 2.0b5
+    Found link http://pypi.python.org/packages/any/n/nltk/nltk-2.0b8.macosx-10.5-i386.tar.gz#md5=1d9b5dc378b851e775e3fe4cc5aecfaf (from http://pypi.python.org/simple/nltk/), version: 2.0b8.macosx-10.5-i386
+    Found link http://pypi.python.org/packages/any/n/nltk/nltk-2.0.1rc1.macosx-10.6-x86_64.tar.gz#md5=f3c8c67ac388cda567d669880192d6f0 (from http://pypi.python.org/simple/nltk/), version: 2.0.1rc1.macosx-10.6-x86_64
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0.1rc1.tar.gz#md5=e29ff1c55a1d015b84c4480bb47fd9a1 (from http://pypi.python.org/simple/nltk/), version: 2.0.1rc1
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b4.tar.gz#md5=440f8722c3d6c8d7aa381b14f55013fc (from http://pypi.python.org/simple/nltk/), version: 2.0b4
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b9.tar.gz#md5=41e129f2263698a8d9ba2fc2e2915af9 (from http://pypi.python.org/simple/nltk/), version: 2.0b9
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b8.tar.gz#md5=f6d3ea980ab5a9f8e476601085463592 (from http://pypi.python.org/simple/nltk/), version: 2.0b8
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b7.tar.gz#md5=2826255cd1f6c8410824be67e804a19f (from http://pypi.python.org/simple/nltk/), version: 2.0b7
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b6.tar.gz#md5=52d0e88044d37f4f61656357deb179df (from http://pypi.python.org/simple/nltk/), version: 2.0b6
+    Skipping link http://nltk.sf.net/ (from http://pypi.python.org/simple/nltk/); not a file
+    Skipping link http://www.nltk.org/ (from http://pypi.python.org/simple/nltk/); not a file
+    Skipping link http://nltk.org/ (from http://pypi.python.org/simple/nltk/); not a file
+    Skipping link http://www.nltk.org/download (from http://pypi.python.org/simple/nltk/); not a file
+  Analyzing links from page http://www.nltk.org/
+    Skipping link http://www.google.com/images/icons/product/sites-16.ico (from http://www.nltk.org/); unknown archive format: .ico
+    Skipping link http://www.gstatic.com/sites/p/d971e5/system/app/images/apple-touch-icon.png (from http://www.nltk.org/); unknown archive format: .png
+    Skipping link http://www.gstatic.com/sites/p/d971e5/system/app/themes/cherrypie/standard-css-cherrypie-ltr-ltr.css (from http://www.nltk.org/); unknown archive format: .css
+    Skipping link http://www.nltk.org/_/rsrc/1308168172000/system/app/css/overlay.css?cb=cherrypieundefineda100%25%25150goog-ws-left (from http://www.nltk.org/); unknown archive format: .css
+    Skipping link http://www.nltk.org/book (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/code (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/contribute (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/courses (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/data (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/documentation (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/faq (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/forums (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/getting-started (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/howto (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/news-archive (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/projects (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/quotes (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/teaching (from http://www.nltk.org/); not a file
+    Skipping link http://www.apache.org/licenses/LICENSE-2.0 (from http://www.nltk.org/); unknown archive format: .0
+    Skipping link http://creativecommons.org/licenses/by-nc-nd/3.0/us/ (from http://www.nltk.org/); not a file
+    Skipping link http://estive.net/ (from http://www.nltk.org/); not a file
+    Skipping link http://groups.google.com/group/nltk (from http://www.nltk.org/); not a file
+    Skipping link http://groups.google.com/group/nltk-users (from http://www.nltk.org/); not a file
+    Skipping link http://nltk.googlecode.com/svn/trunk/doc/api/index.html (from http://www.nltk.org/); unknown archive format: .html
+    Skipping link http://code.google.com/p/nltk/source/browse/trunk/nltk/nltk (from http://www.nltk.org/); not a file
+    Skipping link http://code.google.com/p/nltk/ (from http://www.nltk.org/); not a file
+    Skipping link http://code.google.com/p/nltk/wiki/People (from http://www.nltk.org/); not a file
+    Skipping link http://scholar.google.com.au/scholar?q=NLTK (from http://www.nltk.org/); not a file
+    Skipping link https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=1140248 (from http://www.nltk.org/); not a file
+    Skipping link https://www.google.com/a/UniversalLogin?service=jotspot&amp;continue=http://sites.google.com/site/naturallanguagetoolkit/Home (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/system/app/pages/recentChanges (from http://www.nltk.org/); not a file
+    Skipping link javascript:void%28window.open%28%27http://www.google.com/sites/help/intl/en/terms.html%27%29%29 (from http://www.nltk.org/); unknown archive format: .html%27%29%29
+    Skipping link http://www.nltk.org/system/app/pages/reportAbuse?src=/Home (from http://www.nltk.org/); not a file
+    Skipping link javascript:; (from http://www.nltk.org/); not a file
+    Skipping link http://sites.google.com (from http://www.nltk.org/); not a file
+  Analyzing links from page http://www.nltk.org/
+  Analyzing links from page http://www.nltk.org/download
+    Skipping link http://www.nltk.org/Home (from http://www.nltk.org/download); not a file
+    Skipping link http://www.python.org/ftp/python/2.6.6/python-2.6.6.msi (from http://www.nltk.org/download); unknown archive format: .msi
+    Skipping link http://pyyaml.org/download/pyyaml/PyYAML-3.09.win32-py2.6.exe (from http://www.nltk.org/download); unknown archive format: .exe
+    Skipping link http://nltk.googlecode.com/files/nltk-2.0b9.win32.msi (from http://www.nltk.org/download); unknown archive format: .msi
+    Skipping link http://nltk.googlecode.com/files/nltk-2.0b9.win32.exe (from http://www.nltk.org/download); unknown archive format: .exe
+    Skipping link http://prdownloads.sourceforge.net/numpy/numpy-1.5.1-win32-superpack-python2.6.exe (from http://www.nltk.org/download); unknown archive format: .exe
+    Skipping link http://prdownloads.sourceforge.net/matplotlib/matplotlib-1.0.1.win32-py2.6.exe (from http://www.nltk.org/download); unknown archive format: .exe
+    Skipping link http://www.dll-files.com/dllindex/dll-files.shtml?msvcp71 (from http://www.nltk.org/download); unknown archive format: .shtml
+    Skipping link http://www.cs.unm.edu/%7Emccune/mace4/download/LADR1007B-win.zip (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://w3.msi.vxu.se/%7Ejha/maltparser/dist/malt-1.2.zip (from http://www.nltk.org/download); wrong project name (not nltk)
+    Could not parse version from link: http://hal3.name/megam/megam_src.tgz (from http://www.nltk.org/download)
+    Skipping link http://hal3.name/megam/megam_src.tgz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://www.python.org/ftp/python/2.6.6/python-2.6.6-macosx10.3.dmg (from http://www.nltk.org/download); unknown archive format: .dmg
+    Skipping link http://www.macports.org/ (from http://www.nltk.org/download); not a file
+    Skipping link http://pyyaml.org/download/pyyaml/PyYAML-3.09.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://nltk.googlecode.com/files/nltk-2.0.1rc1.dmg (from http://www.nltk.org/download); unknown archive format: .dmg
+    Skipping link http://www.nltk.org/goog_984992502 (from http://www.nltk.org/download); not a file
+    Skipping link http://numpy-1.5.1-py2.6-python.org-macosx10.3.dmg (from http://www.nltk.org/download); not a file
+    Skipping link http://prdownloads.sourceforge.net/matplotlib/matplotlib-1.0.1-python.org-py2.6-macosx10.3.dmg (from http://www.nltk.org/download); unknown archive format: .dmg
+    Skipping link http://www.cs.unm.edu/%7Emccune/mace4/download/LADR-2009-11A.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://w3.msi.vxu.se/%7Ejha/maltparser/dist/malt-1.2.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://rpmfind.net/linux/rpm2html/search.php?query=python (from http://www.nltk.org/download); unknown archive format: .php
+    Skipping link http://www.python.org/ftp/python/2.6.6/Python-2.6.6.tgz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Found link http://nltk.googlecode.com/files/nltk-2.01rc1.tar.gz (from http://www.nltk.org/download), version: 2.01rc1
+    Skipping link http://prdownloads.sourceforge.net/numpy/numpy-1.5.1.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://prdownloads.sourceforge.net/matplotlib/matplotlib-1.0.1.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://groups.google.com/group/nltk-users/browse_thread/thread/b78bd455c205d42a (from http://www.nltk.org/download); not a file
+    Found link http://nltk.googlecode.com/files/nltk-2.0.1rc1.zip (from http://www.nltk.org/download), version: 2.0.1rc1
+    Skipping link http://nltk.googlecode.com/files/nltk_2.0b5-1_all.deb (from http://www.nltk.org/download); unknown archive format: .deb
+    Found link http://nltk.googlecode.com/files/nltk-0.9.9.zip (from http://www.nltk.org/download), version: 0.9.9
+    Skipping link http://code.google.com/p/nltk/downloads/list (from http://www.nltk.org/download); not a file
+    Skipping link https://sourceforge.net/projects/nltk/files/ (from http://www.nltk.org/download); not a file
+    Skipping link http://sourceforge.net/project/showfiles.php?group_id=30982&amp;package_id=156043 (from http://www.nltk.org/download); unknown archive format: .php
+    Skipping link https://www.google.com/a/UniversalLogin?service=jotspot&amp;continue=http://sites.google.com/site/naturallanguagetoolkit/download (from http://www.nltk.org/download); not a file
+    Skipping link http://www.nltk.org/system/app/pages/reportAbuse?src=/download (from http://www.nltk.org/download); not a file
+  Using version 2.01rc1 (newest of versions: 2.01rc1, 2.0.1rc1.macosx-10.6-x86_64, 2.0.1rc1, 2.0.1rc1, 2.0b9, 2.0b8.macosx-10.5-i386, 2.0b8, 2.0b7, 2.0b6, 2.0b5, 2.0b4, 0.9.9)
+  HTTP error 404 while getting http://nltk.googlecode.com/files/nltk-2.01rc1.tar.gz (from http://www.nltk.org/download)
+  Could not install requirement nltk because of error HTTP Error 404: Not Found
+Could not install requirement nltk because of HTTP error HTTP Error 404: Not Found for URL http://nltk.googlecode.com/files/nltk-2.01rc1.tar.gz (from http://www.nltk.org/download)
+Exception information:
+Traceback (most recent call last):
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 482, in main
+    self.run(options, args)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 675, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2435, in install_files
+    % (req_to_install, e, url))
+InstallationError: Could not install requirement nltk because of HTTP error HTTP Error 404: Not Found for URL http://nltk.googlecode.com/files/nltk-2.01rc1.tar.gz (from http://www.nltk.org/download)
+------------------------------------------------------------
+/home/cretu/soleno-env/bin/pip run on Fri Jun 24 18:15:42 2011
+Downloading/unpacking nltk
+  Getting page http://pypi.python.org/simple/nltk
+  URLs to search for versions for nltk:
+  * http://pypi.python.org/simple/nltk/
+  Getting page http://nltk.sf.net/
+  Could not fetch URL http://nltk.sf.net/ (from http://pypi.python.org/simple/nltk/): HTTP Error 500: Internal Server Error
+  Will skip URL http://nltk.sf.net/ when looking for download links for nltk
+  Getting page http://www.nltk.org/
+  Getting page http://nltk.org/
+  Getting page http://www.nltk.org/download
+  Analyzing links from page http://pypi.python.org/simple/nltk/
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b5.tar.gz#md5=01bafb1c5b823e7e262b011499fdfe05 (from http://pypi.python.org/simple/nltk/), version: 2.0b5
+    Found link http://pypi.python.org/packages/any/n/nltk/nltk-2.0b8.macosx-10.5-i386.tar.gz#md5=1d9b5dc378b851e775e3fe4cc5aecfaf (from http://pypi.python.org/simple/nltk/), version: 2.0b8.macosx-10.5-i386
+    Found link http://pypi.python.org/packages/any/n/nltk/nltk-2.0.1rc1.macosx-10.6-x86_64.tar.gz#md5=f3c8c67ac388cda567d669880192d6f0 (from http://pypi.python.org/simple/nltk/), version: 2.0.1rc1.macosx-10.6-x86_64
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0.1rc1.tar.gz#md5=e29ff1c55a1d015b84c4480bb47fd9a1 (from http://pypi.python.org/simple/nltk/), version: 2.0.1rc1
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b4.tar.gz#md5=440f8722c3d6c8d7aa381b14f55013fc (from http://pypi.python.org/simple/nltk/), version: 2.0b4
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b9.tar.gz#md5=41e129f2263698a8d9ba2fc2e2915af9 (from http://pypi.python.org/simple/nltk/), version: 2.0b9
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b8.tar.gz#md5=f6d3ea980ab5a9f8e476601085463592 (from http://pypi.python.org/simple/nltk/), version: 2.0b8
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b7.tar.gz#md5=2826255cd1f6c8410824be67e804a19f (from http://pypi.python.org/simple/nltk/), version: 2.0b7
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b6.tar.gz#md5=52d0e88044d37f4f61656357deb179df (from http://pypi.python.org/simple/nltk/), version: 2.0b6
+    Skipping link http://nltk.sf.net/ (from http://pypi.python.org/simple/nltk/); not a file
+    Skipping link http://www.nltk.org/ (from http://pypi.python.org/simple/nltk/); not a file
+    Skipping link http://nltk.org/ (from http://pypi.python.org/simple/nltk/); not a file
+    Skipping link http://www.nltk.org/download (from http://pypi.python.org/simple/nltk/); not a file
+  Analyzing links from page http://www.nltk.org/
+    Skipping link http://www.google.com/images/icons/product/sites-16.ico (from http://www.nltk.org/); unknown archive format: .ico
+    Skipping link http://www.gstatic.com/sites/p/d971e5/system/app/images/apple-touch-icon.png (from http://www.nltk.org/); unknown archive format: .png
+    Skipping link http://www.gstatic.com/sites/p/d971e5/system/app/themes/cherrypie/standard-css-cherrypie-ltr-ltr.css (from http://www.nltk.org/); unknown archive format: .css
+    Skipping link http://www.nltk.org/_/rsrc/1308168172000/system/app/css/overlay.css?cb=cherrypieundefineda100%25%25150goog-ws-left (from http://www.nltk.org/); unknown archive format: .css
+    Skipping link http://www.nltk.org/book (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/code (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/contribute (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/courses (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/data (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/documentation (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/faq (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/forums (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/getting-started (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/howto (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/news-archive (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/projects (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/quotes (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/teaching (from http://www.nltk.org/); not a file
+    Skipping link http://www.apache.org/licenses/LICENSE-2.0 (from http://www.nltk.org/); unknown archive format: .0
+    Skipping link http://creativecommons.org/licenses/by-nc-nd/3.0/us/ (from http://www.nltk.org/); not a file
+    Skipping link http://estive.net/ (from http://www.nltk.org/); not a file
+    Skipping link http://groups.google.com/group/nltk (from http://www.nltk.org/); not a file
+    Skipping link http://groups.google.com/group/nltk-users (from http://www.nltk.org/); not a file
+    Skipping link http://nltk.googlecode.com/svn/trunk/doc/api/index.html (from http://www.nltk.org/); unknown archive format: .html
+    Skipping link http://code.google.com/p/nltk/source/browse/trunk/nltk/nltk (from http://www.nltk.org/); not a file
+    Skipping link http://code.google.com/p/nltk/ (from http://www.nltk.org/); not a file
+    Skipping link http://code.google.com/p/nltk/wiki/People (from http://www.nltk.org/); not a file
+    Skipping link http://scholar.google.com.au/scholar?q=NLTK (from http://www.nltk.org/); not a file
+    Skipping link https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=1140248 (from http://www.nltk.org/); not a file
+    Skipping link https://www.google.com/a/UniversalLogin?service=jotspot&amp;continue=http://sites.google.com/site/naturallanguagetoolkit/Home (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/system/app/pages/recentChanges (from http://www.nltk.org/); not a file
+    Skipping link javascript:void%28window.open%28%27http://www.google.com/sites/help/intl/en/terms.html%27%29%29 (from http://www.nltk.org/); unknown archive format: .html%27%29%29
+    Skipping link http://www.nltk.org/system/app/pages/reportAbuse?src=/Home (from http://www.nltk.org/); not a file
+    Skipping link javascript:; (from http://www.nltk.org/); not a file
+    Skipping link http://sites.google.com (from http://www.nltk.org/); not a file
+  Analyzing links from page http://www.nltk.org/
+  Analyzing links from page http://www.nltk.org/download
+    Skipping link http://www.nltk.org/Home (from http://www.nltk.org/download); not a file
+    Skipping link http://www.python.org/ftp/python/2.6.6/python-2.6.6.msi (from http://www.nltk.org/download); unknown archive format: .msi
+    Skipping link http://pyyaml.org/download/pyyaml/PyYAML-3.09.win32-py2.6.exe (from http://www.nltk.org/download); unknown archive format: .exe
+    Skipping link http://nltk.googlecode.com/files/nltk-2.0b9.win32.msi (from http://www.nltk.org/download); unknown archive format: .msi
+    Skipping link http://nltk.googlecode.com/files/nltk-2.0b9.win32.exe (from http://www.nltk.org/download); unknown archive format: .exe
+    Skipping link http://prdownloads.sourceforge.net/numpy/numpy-1.5.1-win32-superpack-python2.6.exe (from http://www.nltk.org/download); unknown archive format: .exe
+    Skipping link http://prdownloads.sourceforge.net/matplotlib/matplotlib-1.0.1.win32-py2.6.exe (from http://www.nltk.org/download); unknown archive format: .exe
+    Skipping link http://www.dll-files.com/dllindex/dll-files.shtml?msvcp71 (from http://www.nltk.org/download); unknown archive format: .shtml
+    Skipping link http://www.cs.unm.edu/%7Emccune/mace4/download/LADR1007B-win.zip (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://w3.msi.vxu.se/%7Ejha/maltparser/dist/malt-1.2.zip (from http://www.nltk.org/download); wrong project name (not nltk)
+    Could not parse version from link: http://hal3.name/megam/megam_src.tgz (from http://www.nltk.org/download)
+    Skipping link http://hal3.name/megam/megam_src.tgz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://www.python.org/ftp/python/2.6.6/python-2.6.6-macosx10.3.dmg (from http://www.nltk.org/download); unknown archive format: .dmg
+    Skipping link http://www.macports.org/ (from http://www.nltk.org/download); not a file
+    Skipping link http://pyyaml.org/download/pyyaml/PyYAML-3.09.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://nltk.googlecode.com/files/nltk-2.0.1rc1.dmg (from http://www.nltk.org/download); unknown archive format: .dmg
+    Skipping link http://www.nltk.org/goog_984992502 (from http://www.nltk.org/download); not a file
+    Skipping link http://numpy-1.5.1-py2.6-python.org-macosx10.3.dmg (from http://www.nltk.org/download); not a file
+    Skipping link http://prdownloads.sourceforge.net/matplotlib/matplotlib-1.0.1-python.org-py2.6-macosx10.3.dmg (from http://www.nltk.org/download); unknown archive format: .dmg
+    Skipping link http://www.cs.unm.edu/%7Emccune/mace4/download/LADR-2009-11A.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://w3.msi.vxu.se/%7Ejha/maltparser/dist/malt-1.2.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://rpmfind.net/linux/rpm2html/search.php?query=python (from http://www.nltk.org/download); unknown archive format: .php
+    Skipping link http://www.python.org/ftp/python/2.6.6/Python-2.6.6.tgz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Found link http://nltk.googlecode.com/files/nltk-2.01rc1.tar.gz (from http://www.nltk.org/download), version: 2.01rc1
+    Skipping link http://prdownloads.sourceforge.net/numpy/numpy-1.5.1.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://prdownloads.sourceforge.net/matplotlib/matplotlib-1.0.1.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://groups.google.com/group/nltk-users/browse_thread/thread/b78bd455c205d42a (from http://www.nltk.org/download); not a file
+    Found link http://nltk.googlecode.com/files/nltk-2.0.1rc1.zip (from http://www.nltk.org/download), version: 2.0.1rc1
+    Skipping link http://nltk.googlecode.com/files/nltk_2.0b5-1_all.deb (from http://www.nltk.org/download); unknown archive format: .deb
+    Found link http://nltk.googlecode.com/files/nltk-0.9.9.zip (from http://www.nltk.org/download), version: 0.9.9
+    Skipping link http://code.google.com/p/nltk/downloads/list (from http://www.nltk.org/download); not a file
+    Skipping link https://sourceforge.net/projects/nltk/files/ (from http://www.nltk.org/download); not a file
+    Skipping link http://sourceforge.net/project/showfiles.php?group_id=30982&amp;package_id=156043 (from http://www.nltk.org/download); unknown archive format: .php
+    Skipping link https://www.google.com/a/UniversalLogin?service=jotspot&amp;continue=http://sites.google.com/site/naturallanguagetoolkit/download (from http://www.nltk.org/download); not a file
+    Skipping link http://www.nltk.org/system/app/pages/reportAbuse?src=/download (from http://www.nltk.org/download); not a file
+  Using version 2.01rc1 (newest of versions: 2.01rc1, 2.0.1rc1.macosx-10.6-x86_64, 2.0.1rc1, 2.0.1rc1, 2.0b9, 2.0b8.macosx-10.5-i386, 2.0b8, 2.0b7, 2.0b6, 2.0b5, 2.0b4, 0.9.9)
+  HTTP error 404 while getting http://nltk.googlecode.com/files/nltk-2.01rc1.tar.gz (from http://www.nltk.org/download)
+  Could not install requirement nltk because of error HTTP Error 404: Not Found
+Could not install requirement nltk because of HTTP error HTTP Error 404: Not Found for URL http://nltk.googlecode.com/files/nltk-2.01rc1.tar.gz (from http://www.nltk.org/download)
+Exception information:
+Traceback (most recent call last):
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 482, in main
+    self.run(options, args)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 675, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2435, in install_files
+    % (req_to_install, e, url))
+InstallationError: Could not install requirement nltk because of HTTP error HTTP Error 404: Not Found for URL http://nltk.googlecode.com/files/nltk-2.01rc1.tar.gz (from http://www.nltk.org/download)
+------------------------------------------------------------
+/home/cretu/soleno-env/bin/pip run on Fri Jun 24 18:18:10 2011
+Downloading/unpacking http://code.google.com/p/nltk/downloads/list
+  Downloading from URL http://code.google.com/p/nltk/downloads/list
+  Cannot unpack file /tmp/tmpOL3Xf5/list (downloaded from /tmp/pip-g7zYKk-build, content-type: text/html; charset=UTF-8); cannot detect archive format
+Cannot determine archive format of /tmp/pip-g7zYKk-build
+Exception information:
+Traceback (most recent call last):
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 482, in main
+    self.run(options, args)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 675, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2429, in install_files
+    self.unpack_url(url, location, self.is_download)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2601, in unpack_url
+    self.unpack_file(temp_location, location, content_type, link)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2652, in unpack_file
+    raise InstallationError('Cannot determine archive format of %s' % location)
+InstallationError: Cannot determine archive format of /tmp/pip-g7zYKk-build
+------------------------------------------------------------
+/home/cretu/soleno-env/bin/pip run on Fri Jun 24 18:19:05 2011
+Downloading/unpacking http://nltk.googlecode.com/files/nltk-2.0.1rc1-py2.6.egg
+  Downloading from URL http://nltk.googlecode.com/files/nltk-2.0.1rc1-py2.6.egg
+  Running setup.py egg_info for package from http://nltk.googlecode.com/files/nltk-2.0.1rc1-py2.6.egg
+    Traceback (most recent call last):
+      File "<string>", line 14, in <module>
+    IOError: [Errno 2] No such file or directory: '/tmp/pip-PzvztF-build/setup.py'
+    Complete output from command python setup.py egg_info:
+    Traceback (most recent call last):
+
+  File "<string>", line 14, in <module>
+
+IOError: [Errno 2] No such file or directory: '/tmp/pip-PzvztF-build/setup.py'
+
+----------------------------------------
+Command python setup.py egg_info failed with error code 1
+Exception information:
+Traceback (most recent call last):
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 482, in main
+    self.run(options, args)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 675, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2453, in install_files
+    req_to_install.run_egg_info()
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 1827, in run_egg_info
+    command_desc='python setup.py egg_info')
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 4354, in call_subprocess
+    % (command_desc, proc.returncode))
+InstallationError: Command python setup.py egg_info failed with error code 1
+------------------------------------------------------------
+/home/cretu/soleno-env/bin/pip run on Fri Jun 24 18:34:48 2011
+Downloading/unpacking nltk
+  Getting page http://pypi.python.org/simple/nltk
+  URLs to search for versions for nltk:
+  * http://pypi.python.org/simple/nltk/
+  Getting page http://nltk.sf.net/
+  Could not fetch URL http://nltk.sf.net/ (from http://pypi.python.org/simple/nltk/): HTTP Error 500: Internal Server Error
+  Will skip URL http://nltk.sf.net/ when looking for download links for nltk
+  Getting page http://www.nltk.org/
+  Getting page http://nltk.org/
+  Getting page http://www.nltk.org/download
+  Analyzing links from page http://pypi.python.org/simple/nltk/
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b5.tar.gz#md5=01bafb1c5b823e7e262b011499fdfe05 (from http://pypi.python.org/simple/nltk/), version: 2.0b5
+    Found link http://pypi.python.org/packages/any/n/nltk/nltk-2.0b8.macosx-10.5-i386.tar.gz#md5=1d9b5dc378b851e775e3fe4cc5aecfaf (from http://pypi.python.org/simple/nltk/), version: 2.0b8.macosx-10.5-i386
+    Found link http://pypi.python.org/packages/any/n/nltk/nltk-2.0.1rc1.macosx-10.6-x86_64.tar.gz#md5=f3c8c67ac388cda567d669880192d6f0 (from http://pypi.python.org/simple/nltk/), version: 2.0.1rc1.macosx-10.6-x86_64
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0.1rc1.tar.gz#md5=e29ff1c55a1d015b84c4480bb47fd9a1 (from http://pypi.python.org/simple/nltk/), version: 2.0.1rc1
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b4.tar.gz#md5=440f8722c3d6c8d7aa381b14f55013fc (from http://pypi.python.org/simple/nltk/), version: 2.0b4
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b9.tar.gz#md5=41e129f2263698a8d9ba2fc2e2915af9 (from http://pypi.python.org/simple/nltk/), version: 2.0b9
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b8.tar.gz#md5=f6d3ea980ab5a9f8e476601085463592 (from http://pypi.python.org/simple/nltk/), version: 2.0b8
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b7.tar.gz#md5=2826255cd1f6c8410824be67e804a19f (from http://pypi.python.org/simple/nltk/), version: 2.0b7
+    Found link http://pypi.python.org/packages/source/n/nltk/nltk-2.0b6.tar.gz#md5=52d0e88044d37f4f61656357deb179df (from http://pypi.python.org/simple/nltk/), version: 2.0b6
+    Skipping link http://nltk.sf.net/ (from http://pypi.python.org/simple/nltk/); not a file
+    Skipping link http://www.nltk.org/ (from http://pypi.python.org/simple/nltk/); not a file
+    Skipping link http://nltk.org/ (from http://pypi.python.org/simple/nltk/); not a file
+    Skipping link http://www.nltk.org/download (from http://pypi.python.org/simple/nltk/); not a file
+  Analyzing links from page http://www.nltk.org/
+    Skipping link http://www.google.com/images/icons/product/sites-16.ico (from http://www.nltk.org/); unknown archive format: .ico
+    Skipping link http://www.gstatic.com/sites/p/d971e5/system/app/images/apple-touch-icon.png (from http://www.nltk.org/); unknown archive format: .png
+    Skipping link http://www.gstatic.com/sites/p/d971e5/system/app/themes/cherrypie/standard-css-cherrypie-ltr-ltr.css (from http://www.nltk.org/); unknown archive format: .css
+    Skipping link http://www.nltk.org/_/rsrc/1308168172000/system/app/css/overlay.css?cb=cherrypieundefineda100%25%25150goog-ws-left (from http://www.nltk.org/); unknown archive format: .css
+    Skipping link http://www.nltk.org/book (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/code (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/contribute (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/courses (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/data (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/documentation (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/faq (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/forums (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/getting-started (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/howto (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/news-archive (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/projects (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/quotes (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/teaching (from http://www.nltk.org/); not a file
+    Skipping link http://www.apache.org/licenses/LICENSE-2.0 (from http://www.nltk.org/); unknown archive format: .0
+    Skipping link http://creativecommons.org/licenses/by-nc-nd/3.0/us/ (from http://www.nltk.org/); not a file
+    Skipping link http://estive.net/ (from http://www.nltk.org/); not a file
+    Skipping link http://groups.google.com/group/nltk (from http://www.nltk.org/); not a file
+    Skipping link http://groups.google.com/group/nltk-users (from http://www.nltk.org/); not a file
+    Skipping link http://nltk.googlecode.com/svn/trunk/doc/api/index.html (from http://www.nltk.org/); unknown archive format: .html
+    Skipping link http://code.google.com/p/nltk/source/browse/trunk/nltk/nltk (from http://www.nltk.org/); not a file
+    Skipping link http://code.google.com/p/nltk/ (from http://www.nltk.org/); not a file
+    Skipping link http://code.google.com/p/nltk/wiki/People (from http://www.nltk.org/); not a file
+    Skipping link http://scholar.google.com.au/scholar?q=NLTK (from http://www.nltk.org/); not a file
+    Skipping link https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=1140248 (from http://www.nltk.org/); not a file
+    Skipping link https://www.google.com/a/UniversalLogin?service=jotspot&amp;continue=http://sites.google.com/site/naturallanguagetoolkit/Home (from http://www.nltk.org/); not a file
+    Skipping link http://www.nltk.org/system/app/pages/recentChanges (from http://www.nltk.org/); not a file
+    Skipping link javascript:void%28window.open%28%27http://www.google.com/sites/help/intl/en/terms.html%27%29%29 (from http://www.nltk.org/); unknown archive format: .html%27%29%29
+    Skipping link http://www.nltk.org/system/app/pages/reportAbuse?src=/Home (from http://www.nltk.org/); not a file
+    Skipping link javascript:; (from http://www.nltk.org/); not a file
+    Skipping link http://sites.google.com (from http://www.nltk.org/); not a file
+  Analyzing links from page http://www.nltk.org/
+  Analyzing links from page http://www.nltk.org/download
+    Skipping link http://www.nltk.org/Home (from http://www.nltk.org/download); not a file
+    Skipping link http://www.python.org/ftp/python/2.6.6/python-2.6.6.msi (from http://www.nltk.org/download); unknown archive format: .msi
+    Skipping link http://pyyaml.org/download/pyyaml/PyYAML-3.09.win32-py2.6.exe (from http://www.nltk.org/download); unknown archive format: .exe
+    Skipping link http://nltk.googlecode.com/files/nltk-2.0b9.win32.msi (from http://www.nltk.org/download); unknown archive format: .msi
+    Skipping link http://nltk.googlecode.com/files/nltk-2.0b9.win32.exe (from http://www.nltk.org/download); unknown archive format: .exe
+    Skipping link http://prdownloads.sourceforge.net/numpy/numpy-1.5.1-win32-superpack-python2.6.exe (from http://www.nltk.org/download); unknown archive format: .exe
+    Skipping link http://prdownloads.sourceforge.net/matplotlib/matplotlib-1.0.1.win32-py2.6.exe (from http://www.nltk.org/download); unknown archive format: .exe
+    Skipping link http://www.dll-files.com/dllindex/dll-files.shtml?msvcp71 (from http://www.nltk.org/download); unknown archive format: .shtml
+    Skipping link http://www.cs.unm.edu/%7Emccune/mace4/download/LADR1007B-win.zip (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://w3.msi.vxu.se/%7Ejha/maltparser/dist/malt-1.2.zip (from http://www.nltk.org/download); wrong project name (not nltk)
+    Could not parse version from link: http://hal3.name/megam/megam_src.tgz (from http://www.nltk.org/download)
+    Skipping link http://hal3.name/megam/megam_src.tgz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://www.python.org/ftp/python/2.6.6/python-2.6.6-macosx10.3.dmg (from http://www.nltk.org/download); unknown archive format: .dmg
+    Skipping link http://www.macports.org/ (from http://www.nltk.org/download); not a file
+    Skipping link http://pyyaml.org/download/pyyaml/PyYAML-3.09.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://nltk.googlecode.com/files/nltk-2.0.1rc1.dmg (from http://www.nltk.org/download); unknown archive format: .dmg
+    Skipping link http://www.nltk.org/goog_984992502 (from http://www.nltk.org/download); not a file
+    Skipping link http://numpy-1.5.1-py2.6-python.org-macosx10.3.dmg (from http://www.nltk.org/download); not a file
+    Skipping link http://prdownloads.sourceforge.net/matplotlib/matplotlib-1.0.1-python.org-py2.6-macosx10.3.dmg (from http://www.nltk.org/download); unknown archive format: .dmg
+    Skipping link http://www.cs.unm.edu/%7Emccune/mace4/download/LADR-2009-11A.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://w3.msi.vxu.se/%7Ejha/maltparser/dist/malt-1.2.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://rpmfind.net/linux/rpm2html/search.php?query=python (from http://www.nltk.org/download); unknown archive format: .php
+    Skipping link http://www.python.org/ftp/python/2.6.6/Python-2.6.6.tgz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Found link http://nltk.googlecode.com/files/nltk-2.01rc1.tar.gz (from http://www.nltk.org/download), version: 2.01rc1
+    Skipping link http://prdownloads.sourceforge.net/numpy/numpy-1.5.1.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://prdownloads.sourceforge.net/matplotlib/matplotlib-1.0.1.tar.gz (from http://www.nltk.org/download); wrong project name (not nltk)
+    Skipping link http://groups.google.com/group/nltk-users/browse_thread/thread/b78bd455c205d42a (from http://www.nltk.org/download); not a file
+    Found link http://nltk.googlecode.com/files/nltk-2.0.1rc1.zip (from http://www.nltk.org/download), version: 2.0.1rc1
+    Skipping link http://nltk.googlecode.com/files/nltk_2.0b5-1_all.deb (from http://www.nltk.org/download); unknown archive format: .deb
+    Found link http://nltk.googlecode.com/files/nltk-0.9.9.zip (from http://www.nltk.org/download), version: 0.9.9
+    Skipping link http://code.google.com/p/nltk/downloads/list (from http://www.nltk.org/download); not a file
+    Skipping link https://sourceforge.net/projects/nltk/files/ (from http://www.nltk.org/download); not a file
+    Skipping link http://sourceforge.net/project/showfiles.php?group_id=30982&amp;package_id=156043 (from http://www.nltk.org/download); unknown archive format: .php
+    Skipping link https://www.google.com/a/UniversalLogin?service=jotspot&amp;continue=http://sites.google.com/site/naturallanguagetoolkit/download (from http://www.nltk.org/download); not a file
+    Skipping link http://www.nltk.org/system/app/pages/reportAbuse?src=/download (from http://www.nltk.org/download); not a file
+  Using version 2.01rc1 (newest of versions: 2.01rc1, 2.0.1rc1.macosx-10.6-x86_64, 2.0.1rc1, 2.0.1rc1, 2.0b9, 2.0b8.macosx-10.5-i386, 2.0b8, 2.0b7, 2.0b6, 2.0b5, 2.0b4, 0.9.9)
+  HTTP error 404 while getting http://nltk.googlecode.com/files/nltk-2.01rc1.tar.gz (from http://www.nltk.org/download)
+  Could not install requirement nltk because of error HTTP Error 404: Not Found
+Could not install requirement nltk because of HTTP error HTTP Error 404: Not Found for URL http://nltk.googlecode.com/files/nltk-2.01rc1.tar.gz (from http://www.nltk.org/download)
+Exception information:
+Traceback (most recent call last):
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 482, in main
+    self.run(options, args)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 675, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2435, in install_files
+    % (req_to_install, e, url))
+InstallationError: Could not install requirement nltk because of HTTP error HTTP Error 404: Not Found for URL http://nltk.googlecode.com/files/nltk-2.01rc1.tar.gz (from http://www.nltk.org/download)
+------------------------------------------------------------
+/home/cretu/soleno-env/bin/pip run on Fri Jun 24 18:36:23 2011
+Downloading/unpacking http://code.google.com/p/nltk/downloads/detail?name=nltk-2.0.1rc1-py2.6.egg
+  Downloading from URL http://code.google.com/p/nltk/downloads/detail?name=nltk-2.0.1rc1-py2.6.egg
+  Cannot unpack file /tmp/tmpLXBL7r/detail (downloaded from /tmp/pip-O1SmRC-build, content-type: text/html; charset=UTF-8); cannot detect archive format
+Cannot determine archive format of /tmp/pip-O1SmRC-build
+Exception information:
+Traceback (most recent call last):
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 482, in main
+    self.run(options, args)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 675, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2429, in install_files
+    self.unpack_url(url, location, self.is_download)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2601, in unpack_url
+    self.unpack_file(temp_location, location, content_type, link)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2652, in unpack_file
+    raise InstallationError('Cannot determine archive format of %s' % location)
+InstallationError: Cannot determine archive format of /tmp/pip-O1SmRC-build
+------------------------------------------------------------
+/home/cretu/soleno-env/bin/pip run on Fri Jun 24 18:36:53 2011
+Downloading/unpacking http://code.google.com/p/nltk/downloads/detail?name=nltk-2.0.1rc1.zip
+  Downloading from URL http://code.google.com/p/nltk/downloads/detail?name=nltk-2.0.1rc1.zip
+  Cannot unpack file /tmp/tmp6Zd_MK/detail (downloaded from /tmp/pip-xFCNBb-build, content-type: text/html; charset=UTF-8); cannot detect archive format
+Cannot determine archive format of /tmp/pip-xFCNBb-build
+Exception information:
+Traceback (most recent call last):
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 482, in main
+    self.run(options, args)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 675, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2429, in install_files
+    self.unpack_url(url, location, self.is_download)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2601, in unpack_url
+    self.unpack_file(temp_location, location, content_type, link)
+  File "/home/cretu/soleno-env/lib/python2.6/site-packages/pip-0.6.1-py2.6.egg/pip.py", line 2652, in unpack_file
+    raise InstallationError('Cannot determine archive format of %s' % location)
+InstallationError: Cannot determine archive format of /tmp/pip-xFCNBb-build
