@@ -1,9 +1,8 @@
-from django.conf import settings
 from django import forms
 
-from django.utils.translation import ugettext_lazy as _, ugettext
+from django.utils.translation import ugettext_lazy as _
 from lectures.widgets import SliderWidget
-from lectures.models import Lecture, LECTURE_STATES
+from lectures.models import Lecture
 
 class LectureCreateForm(forms.Form):
     

@@ -1,5 +1,71 @@
 {% extends "lectures/base.html" %}
 {% load i18n %}
+{% load pagination_tags %}
 
 {% block head_title %}{% blocktrans %}All Lectures{% endblocktrans %}{% endblock %}
 {% block body_class %}lecture_list{% endblock %}
+
+{% block extra_head %}
+	<link rel="stylesheet" href="{{ STATIC_URL }}lectures/lecture_list.css" />
+{% endblock %}
+
+{% block body %}
+	<div id="quick_connect_container">
+		<form method="GET" action="">
+			<input type="text" name="quick_connect" value="{{ connect_to }}" />
+			<input type="submit" value="Quick Connect"/>
+	    </form>
+	</div>
+	<div id="lecture_wrapper">
+	    <div id="lecture_list_container">
+	        <h2>{% blocktrans %} Lecture sessions: {% endblocktrans %}</h2>
+		    {% if lectures %}    
+		        {% autopaginate lectures 5 %}
+		        
+		        {% for lecture in lectures %}
+			        <div class="lecture_list_item">
+			    		  {% ifequal lecture.state 'a'%}			    		  
+			    		  	 <a href="{% url lecture_session lecture.id%}"> <h3><b> {{ lecture.title }} </b></h3></a>
+			    		  {% else %}
+			    		  	 <a href="{% url lecture_detail lecture.id%}"> <h3><b> {{ lecture.title }} </b></h3></a>
+			    		  {% endifequal%}
+			    		  <h5><b>Created on:</b> {{lecture.created_at|date:"H:m:s"  }} </h5>
+			    		  <h5><b>Lecturer:</b> <a href="{% url profile_detail lecture.created_by%}">{{ lecture.created_by }}</a></h5>
+			    		  <p>
+			    		  		{{ lecture.description }}
+			    		  </p>  	  	
+			    	</div>
+		        {% endfor %}
+		        
+		        {% paginate %}
+		        
+		    {% else %}
+		        <p>No lectures were found.</p>
+		 	{% endif %}
+	     </div>
+	     
+	     <div id="lecture_search_container">
+	      	<h2>{% blocktrans %} Lecture search: {% endblocktrans %}</h2>
+	        <form id="lecture_search_form" method="GET" action="">
+	        	<input type="image" id="search_icon" alt="Search" src="{{ STATIC_URL }}images/search.png"/>
+	        	<input type="text" name="search" value="{{ search_terms }}" style="width:170px;margin-left: 10px;"/>
+		        {% if search_terms %}
+		            <a href=".">Clear Search Terms</a>
+		        {% endif %}
+	    	</form>
+	    	<h2>{% blocktrans %} Popular keywords: {% endblocktrans %}</h2>
+	    	<div id="tagcloud">
+		    	{% for keyword in keywords %}
+		    		{{ keyword.key_term }}.
+		    	{% endfor%}
+	    	</div>
+	     </div>
+     </div>
+{% endblock %}
+{% block extra_body %}
+	<script  type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}lectures/tagcloud.js"></script>
+    <script type="text/javascript">
+	     $(function() { $('#tagcloud').tagCloud({ separator: '.'}); });
+    </script>
+{% endblock %}

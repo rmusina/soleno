@@ -5,8 +5,8 @@ body.notices #tab_notices,
 body.lectures #tab_lectures,
 body.lecture_list #tab_lectures,
 body.lecture_create #tab_lectures,
-body.lecture_session #tab_lectures, 
-body.timetable #tab_timetable 
+body.lecture_session #tab_lectures,
+body.lecture_details #tab_lectures
 {
 	background: #BBCC99;	/*selected topnav tab*/
     border-color: #666;
