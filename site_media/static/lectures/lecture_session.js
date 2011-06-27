@@ -8,8 +8,9 @@ $(document).ready(function(){
     	
 	$.cleditor.buttons.save.buttonClick = function(e, data){
 		//postEditorData(data.editor.$area[0].value);
-		var text = data.editor.$area[0].value.replace(/(<([^>]+)>)/ig,"");
-		updateKeywords(text);
+		var html_text = data.editor.$area[0].value;
+		var plain_text = html_text.replace(/(<([^>]+)>)/ig,"");
+		updateKeywords(plain_text, html_text);
 		return false;
 	};
 	
@@ -22,7 +23,11 @@ $(document).ready(function(){
 		});
 	}
 	
-	updater.poll();
+	/*$("#nopsa_images").imgPreview({
+	    imgCSS: { width: 200 }
+	});*/
+
+	//updater.poll();
 });
 
 $(function() {	
@@ -296,22 +301,63 @@ var updater = {
 
 /* keyword finding stuff */
 
-function updateKeywords(text) {
-	var keyterms = getKeyTerms(text);
+this.imagePreview = function(){	
+	xOffset = 10;
+	yOffset = 30;
 
+	$("#nopsa_images img").hover(function(e){
+		this.t = this.title;
+		this.title = "";	
+		var c = (this.t != "") ? "<br/>" + this.t : "";
+		$("#body").append("<p id='preview'><img src='"+ this.src +"' alt='Image preview' />"+ c +"</p>");								 
+		$("#preview")
+			.css("top",(e.pageY - xOffset) + "px")
+			.css("left",(e.pageX + yOffset) + "px")
+			.fadeIn("fast");						
+    },
+	function(){
+		this.title = this.t;	
+		$("#preview").remove();
+    });	
+	
+	$("#nopsa_images img").mousemove(function(e){
+		$("#preview")
+			.css("top",(e.pageY - xOffset) + "px")
+			.css("left",(e.pageX + yOffset) + "px");
+	});
+	
+	$("#nopsa_images img").mousedown(function () {
+		this.title = this.t;	
+		$("#preview").remove();
+	});
+};
+
+function updateKeywords(plain_text, html_text) {
+	var keyterms = getKeyTerms(plain_text, html_text);
+	
 	$.post("./keywords", {
 			occurrences: JSON.stringify(keyterms.value),
 			parts_of_speech: JSON.stringify(keyterms.POS),
+			is_highlighted: JSON.stringify(keyterms.isHighlighted)
 		}, 
 		function(response) {
 			$("#keyterms_container").html("");
+			$("#nopsa_images").html("");
+			
 			var responseJSON = JSON.parse(response);
 			
-			for (var key in responseJSON) {
-				if (responseJSON.hasOwnProperty(key)) {
-					$("#keyterms_container").append("<li>" + key + " " + responseJSON[key] + "</li>");
+			for (var key in responseJSON["similarity_ratings"]) {
+				if (responseJSON["similarity_ratings"].hasOwnProperty(key)) {
+					$("#keyterms_container").append("<li>" + responseJSON["similarity_ratings"][key][0] + 
+							"  <b>" + responseJSON["similarity_ratings"][key][1]  + "</b></li>");
 				}
 		    }
+			
+			for (var i = 0; i < responseJSON["fetched_images"].length; i++) {
+				$("#nopsa_images").append(responseJSON["fetched_images"][i]);
+		    }
+			
+			imagePreview();
 		})
 		.error(function(response) {
 			alert("The server was unable to process your request. It might be malformed");

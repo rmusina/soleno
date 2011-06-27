@@ -1,5 +1,4 @@
 from django.db import models
-from django.conf import settings
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
@@ -23,9 +22,17 @@ class Lecture(models.Model):
         verbose_name = _('lecture')
         verbose_name_plural = _('lectures')
         
-class LectureKeywords(models.Model):
+class LectureKeyTerm(models.Model):
     lecture = models.ForeignKey(Lecture, verbose_name=_('lecture'))
-    keyword = models.TextField(_('keyword'))        
+    key_term = models.TextField(_('key term'))     
+    similarity_rating = models.FloatField(_('similarity_rating'))
+    frequency = models.IntegerField(_('frequency'))
+    is_highlighted = models.BooleanField(_('is highlighted'))   
+    ttl = models.IntegerField(_('time to live'))
+    
+    class Meta:
+        verbose_name = _('lecture key term')
+        verbose_name_plural = _('lecture key terms')
         
 class NotesUpdate(models.Model):
     lecture = models.ForeignKey(Lecture, verbose_name=_('lecture'))
@@ -34,5 +41,5 @@ class NotesUpdate(models.Model):
     saved_at = models.DateTimeField(_('saved at'), auto_now_add=True)
         
     class Meta:
-        verbose_name = _('Notes Update')
-        verbose_name_plural = _('Notes Updates')
+        verbose_name = _('notes update')
+        verbose_name_plural = _('notes updates')

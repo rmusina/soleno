@@ -192,3 +192,30 @@
 	color: #C15C00;
 	background: #fff;
 }
+
+#nopsa_images img{
+	width: 32px;
+	height: 32px;
+	float: left;
+	margin: 5px;
+}
+
+#preview {
+	z-index:900;
+	position:absolute;
+	border:1px solid #ccc;
+	background:#333;
+	padding:5px;
+	display:none;
+	color:#fff;
+}
+
+#preview img {
+	max-height: 150px;
+	max-width: 150px;
+}
+
+#keyterms_container {
+	list-style: none;
+	padding-left: 5px;
+}
