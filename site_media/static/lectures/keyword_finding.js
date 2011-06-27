@@ -3,6 +3,7 @@
 function RepetitionsContainer() {
     this.value = {};
     this.POS = {};
+    this.isHighlighted = {};
 }
 
 RepetitionsContainer.prototype.add = function (key, occurrences) {
@@ -11,6 +12,10 @@ RepetitionsContainer.prototype.add = function (key, occurrences) {
 
 RepetitionsContainer.prototype.addPOS = function (key, pos) {
     this.POS[key] = pos;	
+}
+
+RepetitionsContainer.prototype.setIsHighlighted = function (key, isRepetitionHighlighted) {
+    this.isHighlighted[key] = isRepetitionHighlighted;	
 }
 
 Array.prototype.clean = function (deleteValues) {
@@ -33,9 +38,10 @@ Array.prototype.objectConverter = function () {
   	return obj;
 };
 
-function getKeyTerms(text) {
-    var repetitions = getRepetitions(text);
+function getKeyTerms(plain_text, html_text) {
+    var repetitions = getRepetitions(plain_text);
     filterByJustesonKatzPOSRegex(repetitions);
+    getHighlightedExpressions(html_text, repetitions);
     
     return repetitions;
 }
@@ -154,3 +160,31 @@ function filterByJustesonKatzPOSRegex(repetitions) {
     }
 }
 
+function getHighlightedExpressions(text, repetitions) {
+	var highlightedParagraphs = getHighlightedTextParagraphs(text);
+	
+	for (expression in repetitions.value) {
+		repetitions.setIsHighlighted(expression, isExpressionHighlighted(expression, highlightedParagraphs));
+	}
+}
+
+function isExpressionHighlighted(expression, highlightedParagraphList) {
+	if (highlightedParagraphList == null) {
+		return false;
+	}
+	
+	var expressionFindingRegex = new RegExp(expression, "gi");
+	
+	for (var i = 0; i < highlightedParagraphList.length; i++) {
+		if (expressionFindingRegex.test(highlightedParagraphList[i])) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function getHighlightedTextParagraphs(text) {
+	var highlightedTextFinder = new RegExp(/<h([1-6])>(.+?)<\/h[1-6]>|<b>(.+?)<\/b>|<i>(.+?)<\/i>/gi);
+	
+	return text.match(highlightedTextFinder);
+}
