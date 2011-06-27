@@ -1,6 +1,8 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
+from django.db.models import Q
+from django.utils.translation import ugettext_lazy as _, ugettext
 
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -21,8 +23,42 @@ import operator
 import urllib
 import xml.dom.minidom as xmlParser
     
+def connect_to_session(session_no, request):
+    try:
+        nr = int(session_no)
+        lecture = Lecture.objects.get(id=nr)
+        if lecture.state == 'a':
+            return HttpResponseRedirect(reverse("lecture_session", args=[nr]))
+        else:
+            return HttpResponseRedirect(reverse("lecture_detail", args=[nr]))
+    except:
+        pass
+    
+    request.user.message_set.create(message=ugettext(u"The lecture does not exist")) 
+    
+    return HttpResponseRedirect(reverse("lecture_list"))
+    
 def lecture_list(request, template_name="lectures/lecture_list.html"):
-    return render_to_response(template_name, context_instance=RequestContext(request))
+    session_no = request.GET.get('quick_connect', '')
+    if session_no:
+        return connect_to_session(session_no, request)
+    
+    lectures = Lecture.objects.all()
+    keywords = LectureKeyTerm.objects.order_by('?')[:20]   
+    
+    search_terms = request.GET.get('search', '')
+    print search_terms
+    
+    if search_terms:
+        search_keywords = LectureKeyTerm.objects.filter(key_term=search_terms).values("lecture")
+        lectures = lectures.filter(Q(title__icontains=search_terms) | 
+                                   Q(id__in=search_keywords))
+    
+    return render_to_response(template_name, {
+                                    'lectures': lectures,
+                                    'keywords': keywords,
+                              },                              
+                              context_instance=RequestContext(request))
 
 @login_required
 def lecture_create(request, template_name="lectures/lecture_create.html"):
@@ -81,7 +117,7 @@ def lecture_session(request, lecture_id=None, template_name="lectures/lecture_se
     try:
         current_lecture = Lecture.objects.get(id=lecture_id)
     except:
-        raise Http404
+        render_to_response(template_name, context_instance=RequestContext(request))
     
     if request.is_ajax():
         if request.method == 'GET':

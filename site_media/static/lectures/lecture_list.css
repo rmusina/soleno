@@ -1,0 +1,71 @@
+#lecture_list_container {
+	float: left;
+	width: 65%;
+	height: 600px;
+	border-right: 1px solid #666;
+	overflow-y: auto;
+	overflow-x: hidden; 
+}
+
+#lecture_search_container {
+	position:relative;
+	width: 35%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 600px;
+	padding-left: 10px;
+}
+
+#lecture_search_form {
+}
+
+#lecture_list_container b{
+	color: #EB3800;
+	font-weight: normal;
+}
+
+
+#lecture_list_container h5 {
+	padding-left: 30px;
+	padding-right: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-weight: normal;
+}
+
+#lecture_list_container p,
+#lecture_list_container h2,
+#lecture_list_container h3 {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#search_icon {
+	float: left; 
+	width: 32px; 
+	height: 32px;	
+	background: #BBCC99;
+	border-radius: 4px;	
+	padding: 1px;
+}
+
+#search_icon:hover {
+	background: #C15C00;
+	border-radius: 4px;	
+}
+
+#tagcloud {
+	width: 200px; 
+	height: 450px; 
+	overflow: hidden;
+}
+
+#tagcloud a { 
+	text-decoration:none;
+	padding-bottom:1px; 
+	margin: 4px; 
+}
+
+#tagcloud a:hover { 
+	text-decoration:none; 
+}
