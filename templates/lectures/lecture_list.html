@@ -25,12 +25,17 @@
 		        {% for lecture in lectures %}
 			        <div class="lecture_list_item">
 			    		  {% ifequal lecture.state 'a'%}			    		  
-			    		  	 <a href="{% url lecture_session lecture.id%}"> <h3><b> {{ lecture.title }} </b></h3></a>
+			    		  	 <a href="{% url lecture_session lecture.id%}"> <h3><b> {{ lecture.title }} </b></h3></a><h6 class="active">active</h6>
 			    		  {% else %}
 			    		  	 <a href="{% url lecture_detail lecture.id%}"> <h3><b> {{ lecture.title }} </b></h3></a>
+			    		  	 {% ifequal lecture.state 'f'%}
+			    		  	 	<h6 class="finished">finished</h6>
+			    		  	 {% else %}
+			    		  	 	<h6 class="pending">pending</h6>
+			    		  	 {% endifequal%}
 			    		  {% endifequal%}
-			    		  <h5><b>Created on:</b> {{lecture.created_at|date:"H:m:s"  }} </h5>
-			    		  <h5><b>Lecturer:</b> <a href="{% url profile_detail lecture.created_by%}">{{ lecture.created_by }}</a></h5>
+			    		  <h5><b>{% trans "Created on:" %}</b> {{lecture.created_at|date:"H:m:s"  }} </h5>
+			    		  <h5><b>{% trans "Lecturer:" %}</b> <a href="{% url profile_detail lecture.created_by%}">{{ lecture.created_by }}</a></h5>
 			    		  <p>
 			    		  		{{ lecture.description }}
 			    		  </p>  	  	

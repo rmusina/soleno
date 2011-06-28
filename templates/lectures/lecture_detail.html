@@ -1,6 +1,6 @@
 {% extends "lectures/base.html" %}
 {% load i18n %}
-
+{% load avatar_tags %}
 {% load pagination_tags %}
 
 {% block head_title %}{% blocktrans %}Lecture details{% endblocktrans %}{% endblock %}
@@ -8,4 +8,44 @@
 
 {% block extra_head %}
 	<link rel="stylesheet" href="{{ STATIC_URL }}lectures/lecture_details.css" />
+{% endblock %}
+
+{% block body %}
+	<div class="lecture_wrapper">
+		{% if current_lecture %}
+			        
+	    <div id="lecture_info">	    
+    		<h2>Lecture  <b>{{ current_lecture.title }}</b></h2>
+	    	<p><b>{% trans "Lecturer:" %}</b> <a href="{% url profile_detail current_lecture.created_by %}"> {{ current_lecture.created_by }}</a></p>
+	     	<p><b>{% trans "Created at:" %}</b> {{ current_lecture.created_at|date:"H:m:s" }}</p>
+	    	<p><b>{% trans "Duration:" %}</b> {{ current_lecture.duration }}</p> 
+	    	<p><b>{% trans "Participants:" %}</b> {{ lecture_participants }}</p> 
+	    	<p><b>{% trans "Description:" %}</b> {{ current_lecture.description }}</p>     
+	    </div>
+	    
+	    <div id="lecture_notes">
+	    	<h2>Student notes for lecture:</h2>
+	    	{% if lecture_notes %}
+	    		{% for lecture_note in lecture_notes %}
+	    			<div class="user_note">
+	    				{% avatar lecture_note.created_by 48 %}
+	    				<div class="user_note_info">
+		    				<p><b>{% trans "Author:" %}</b> <a href="{% url profile_detail lecture_note.created_by %}">{{ lecture_note.created_by }}</a></p>
+		    				<p><b>{% trans "Last saved:" %}</b> {{ lecture_note.saved_at|date:"M/d/Y H:m:s" }}</p>
+		    				<p><b>{% trans "Note content:" %}</b><a href="{% url lecture_note_details current_lecture.id lecture_note.id %}"> note details </a> </p>
+	    				</div>
+	    			</div>
+	    		{% endfor %}
+	    	{% else %}
+	    		{% ifequal current_lecture.state 'f'%}
+	    			<h2>No notes were produced during the lecture.</h2>
+			    {% else %}			    	
+	    			<h2>Lecture has not yet started, thus it does not have any notes.</h2>
+			    {% endifequal%}
+	    	{% endif %}
+	    </div>
+	    {% else %}
+	    	<h2>The requested lecture cannot be found</h2>
+	    {% endif %}
+    </div>
 {% endblock %}

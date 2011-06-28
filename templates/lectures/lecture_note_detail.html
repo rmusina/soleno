@@ -1,0 +1,29 @@
+{% extends "lectures/base.html" %}
+{% load i18n %}
+
+{% load pagination_tags %}
+
+{% block head_title %}{% blocktrans %}Lecture details{% endblocktrans %}{% endblock %}
+{% block body_class %}lecture_details{% endblock %}
+
+{% block extra_head %}
+	<link rel="stylesheet" href="{{ STATIC_URL }}lectures/lecture_note_details.css" />
+{% endblock %}
+
+{% block body %}
+	<div class="lecture_notes_wrapper">
+		{% if lecture_note %}
+			<h1>{{ lecture_note.lecture.title }}</h1>
+			<h4><b>{% trans "Author:" %}</b> <a href="{% url profile_detail lecture_note.created_by %}"> {{ lecture_note.created_by }}</a></h4>
+			<h4><b>{% trans "Last modified:" %}</b> <a>{{ lecture_note.saved_at|date:"M/d/Y H:m:s" }}</a></h4>
+			{% if is_me %}
+			<h4><b>{% trans "Edit lecture:" %}</b> <a href="{% url lecture_session lecture_note.lecture.id %}"> edit </a></h4>
+			{% endif %}
+			<div id="lecture_content_container">
+				{{ lecture_note.text|safe }}
+			</div>
+		{% else %}
+			<h2>The requested note cannot be found</h2>
+		{% endif %}
+    </div>
+{% endblock %}

@@ -149,11 +149,27 @@ INSTALLED_APPS = (
     'avatar',
     'lectures',
     'timetable',
+    'djcelery',
     
     #comet-related
     'django_tornado',
 
 )
+
+import djcelery
+djcelery.setup_loader()
+
+# celery related config
+BROKER_HOST = "localhost"
+BROKER_PORT = 5672
+BROKER_USER = "cretu"
+BROKER_PASSWORD = "seavoice"
+BROKER_VHOST = "soleno-vhost"
+
+CELERY_IMPORTS = ("soleno.tasks", )
+
+CELERY_RESULT_BACKEND = "database"
+CELERY_RESULT_DBURI = "sqlite:///celerydb.sqlite"
 
 ABSOLUTE_URL_OVERRIDES = {
     "auth.user": lambda o: "/profiles/profile/%s/" % o.username,

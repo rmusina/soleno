@@ -9,10 +9,13 @@ from django.utils.translation import ugettext
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db.models import Max
 
 from basic_profiles.models import Profile
 from basic_profiles.forms import ProfileForm
+from apps.lectures.models import Lecture, NotesUpdate
 
+import BeautifulSoup
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -51,9 +54,28 @@ def profile(request, username, template_name="basic_profiles/profile.html"):
     else:
         is_me = False
     
+    profile = other_user.get_profile()
+    lectures = []
+    notes = []
+    
+    if profile.is_lecturer:
+        lectures = Lecture.objects.filter(created_by=other_user)
+    else:
+        notes = []
+       
+        try:
+            user_notes = NotesUpdate.objects.filter(created_by=other_user)
+            distinct_lectures = user_notes.values_list('lecture').distinct()
+            for lecture in distinct_lectures:
+                notes.append(user_notes.filter(lecture=lecture[0]).annotate(most_recent=Max('saved_at')).order_by('-most_recent')[0])
+        except:
+            pass
+    
     return render_to_response(template_name, {
         "is_me": is_me,
         "other_user": other_user,
+        "lectures": lectures,
+        "notes": notes,
     }, context_instance=RequestContext(request))
 
 

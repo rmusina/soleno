@@ -22,8 +22,8 @@ body.account_avatar #subnav_account_avatar,
 body.lecture_list #subnav_lecture_list,
 body.lecture_create #subnav_lecture_create
 {
-	color: #000;			/*selected subnav tab*/
-    background: #AA8888;
+	color: #fff;			/*selected subnav tab*/
+    background: #8A2F25;
     border: 1px solid #666;
     border-bottom: none;
 	padding: 4px 9px; 	    /*decreased padding with 1px to compensate for border*/

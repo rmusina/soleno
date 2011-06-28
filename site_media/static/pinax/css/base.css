@@ -149,6 +149,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #logo_placeholder {
+	position: relative;
+	z-index: 900;
 	float: left;
 	height: 10px;
 	margin-left: 25%;

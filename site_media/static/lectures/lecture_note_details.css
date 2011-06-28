@@ -1,0 +1,20 @@
+.lecture_notes_wrapper h1,
+.lecture_notes_wrapper h4 {
+	color: #EB3800;
+}
+
+.lecture_notes_wrapper h4 {
+	margin: 0px;
+}
+
+.lecture_notes_wrapper a {
+	text-decoration: none;
+	color: #666;
+	font-weight: bolder;
+	margin-top: 0px;
+}
+
+#lecture_content_container{
+	padding: 10px;
+	padding-top: 20px;
+}

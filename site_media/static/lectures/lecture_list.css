@@ -16,9 +16,6 @@
 	padding-left: 10px;
 }
 
-#lecture_search_form {
-}
-
 #lecture_list_container b{
 	color: #EB3800;
 	font-weight: normal;
@@ -68,4 +65,37 @@
 
 #tagcloud a:hover { 
 	text-decoration:none; 
+}
+
+.lecture_list_item h3 {
+	float: left;
+}
+
+.lecture_list_item h5 {
+	clear: both;	
+} 
+
+.lecture_list_item h6 {
+	float:right;
+	font-size: 10px;
+	font-weight: bolder;	
+	color: #fff;
+	width: 100px;
+	margin-right: 20px;
+	text-align: center;
+	-webkit-border-radius: 4px 4px 4px 4px;
+	-moz-border-radius: 4px 4px 4px 4px;
+	border-radius: 4px 4px 4px 4px;	
+} 
+
+.lecture_list_item h6.active{
+	background-color: #117000;
+}
+
+.lecture_list_item h6.finished{
+	background-color: #8A2F25;
+}
+
+.lecture_list_item h6.pending{
+	background-color: #C15C00;
 }
