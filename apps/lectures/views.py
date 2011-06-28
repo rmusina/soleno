@@ -13,6 +13,7 @@ from lectures.models import Lecture, NotesUpdate, LectureKeyTerm
 from avatar.templatetags.avatar_tags import avatar
 
 from django.http import Http404
+from django.db.models import Max
 
 import tornado.web
 from django_tornado.decorator import asynchronous
@@ -77,7 +78,55 @@ def lecture_create(request, template_name="lectures/lecture_create.html"):
                               }, context_instance=RequestContext(request))
 
 def lecture_detail(request, lecture_id, template_name="lectures/lecture_detail.html"):
-    return render_to_response(template_name, context_instance=RequestContext(request))
+    try:
+        current_lecture = Lecture.objects.get(id=lecture_id)
+    except:
+        current_lecture = None
+    
+    #lecture_notes = NotesUpdate.objects.filter(lecture=current_lecture)
+    #if lecture_notes:
+    lecture_notes = None
+    lecture_participants = 0;
+    
+    if current_lecture:
+        try:
+            session_notes = NotesUpdate.objects.filter(lecture=current_lecture)
+            distinct_users = session_notes.values_list('created_by').distinct()
+            
+            lecture_notes = []
+            for user in distinct_users:
+                lecture_notes.append(session_notes.filter(created_by=user[0]).annotate(most_recent=Max('saved_at')).order_by('-most_recent')[0])
+            
+            lecture_participants = len(lecture_notes)
+        except:
+            pass
+        
+    
+    return render_to_response(template_name, {
+                                    'current_lecture': current_lecture,
+                                    'lecture_notes': lecture_notes,
+                                    'lecture_participants' : lecture_participants,
+                              },
+                              context_instance=RequestContext(request))
+
+def lecture_note_details(request, lecture_id, note_id, template_name="lectures/lecture_note_detail.html"):
+    try:
+        lecture_note = NotesUpdate.objects.get(id=note_id)
+        lecture_id_int = int(lecture_id)
+    except:
+        lecture_note = None
+    
+    is_me = False    
+    if lecture_note and lecture_note.lecture.id != lecture_id_int:
+        lecture_note = None
+    else:
+        is_me = request.user == lecture_note.created_by
+    
+    return render_to_response(template_name, {
+                                    'lecture_note' : lecture_note,
+                                    'is_me' : is_me,
+                              },
+                              context_instance=RequestContext(request))
 
 class UpdatesController():
     listeners = []
@@ -128,10 +177,20 @@ def lecture_session(request, lecture_id=None, template_name="lectures/lecture_se
                 return HttpResponse(requested_update.text)
             else:
                 return HttpResponse("There are no user notes with your specified id.")
-                
-    return render_to_response(template_name, {
+    updates_list = []
+    user_text = ""
+    
+    try:
+        session_notes = NotesUpdate.objects.filter(lecture=current_lecture);
+        updates_list = session_notes.select_related('created_by', 'saved_at');
+        user_text = session_notes.filter(created_by=request.user).annotate(most_recent=Max('saved_at')).order_by('-most_recent')[0].text
+    except:
+        pass
+    
+    return render_to_response(template_name, {                                              
+                                    'user_text': user_text,
                                     'lecture': current_lecture,
-                                    'updates_list': NotesUpdate.objects.filter(lecture=current_lecture).select_related('created_by', 'saved_at')
+                                    'updates_list': updates_list,
                               },                              
                               context_instance=RequestContext(request))
 
@@ -147,9 +206,7 @@ def lecture_session_new(request, lecture_id):
     if request.is_ajax() and request.method == 'POST':
         try:
             data = request.POST.get("data", None)
-            
-            print data
-                            
+                                        
             if data is not None and data != "":                
                 
                 new_update = NotesUpdate(lecture = current_lecture,

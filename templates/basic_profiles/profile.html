@@ -15,9 +15,9 @@
     <div class="profile_wrapper">
 	    <div class="{% if other_user.get_profile.is_lecturer %}profile_lecturer_data{% else %}profile_student_data{% endif %}">
 	        {% if other_user.get_profile.name %}
-	            <h1>{% blocktrans %}Profile for <b>{{ other_user }}</b> {% endblocktrans %}</h1>
+	            <h2>{% blocktrans %}Profile for <b>{{ other_user }}</b> {% endblocktrans %}</h2>
 	        {% else %}
-	            <h1>{% blocktrans %}Profile for <b>{{ other_user }}</b> {% endblocktrans %}</h1>
+	            <h2>{% blocktrans %}Profile for <b>{{ other_user }}</b> {% endblocktrans %}</h2>
 	        {% endif %}
 	        
 	        <div class="avatar">
@@ -51,62 +51,36 @@
 	    {% if other_user.get_profile.is_lecturer %}
 	    <div class="profile_lecturer_notes">
 	    	<h2>{% blocktrans %} <b>{{ other_user }}</b>'s sessions: {% endblocktrans %}</h2>
-	    	<div class="profile_user_note_item">
-	    		  <a href="."><h3><b>Session title</b></h3></a>
-	    		  <h5><b>Created on:</b> 14-05-2011</h5>
-	    		  <h5><b>Participants:</b> 23 </h5>
-	    		  <p>
-	    		  Built from the ground up to support and simplify your development workflow, Kiln is a complete distributed version control system with branching and merging that really works, large binary file support, a fantastic code review system, detailed code search, a full JSON read/write API, 
-	    		  </p>  	  	
-	    	</div>
-	    	<div class="profile_user_note_item">
-	    		  <a href="."><h3><b>Session title</b></h3></a>
-	    		  <h5><b>Created on:</b> 14-05-2011</h5>
-	    		  <h5><b>Participants:</b> 23 </h5>
-	    		  <p>
-	    		  Small description of the studied curricula: Built from the ground up to support and simplify your development workflow, Kiln is a complete distributed version control system with branching and merging that really works, large binary file support, a fantastic code review system, detailed code search, a full JSON read/write API, 
-	    		  </p>  	 	
-	    	</div>
-	    	<div class="profile_user_note_item">
-	    		  <a href="."><h3><b>Session title</b></h3></a>
-	    		  <h5><b>Created on:</b> 14-05-2011</h5>
-	    		  <h5><b>Participants:</b> 23 </h5>
-	    		  <p>
-	    		  Built from the ground up to support and simplify your development workflow, Kiln is a complete distributed version control system with branching and merging that really works, large binary file support, a fantastic code review system, detailed code search, a full JSON read/write API, 
-	    		  </p>  	  	
-	    	</div>
+		    	{% for lecture in lectures %}
+			    	<div class="profile_user_note_item">
+			    		  {% ifequal lecture.state 'a'%}			    		  
+			    		  	 <a href="{% url lecture_session lecture.id%}"> <h3><b> {{ lecture.title }} </b></h3></a>
+			    		  {% else %}
+			    		  	 <a href="{% url lecture_detail lecture.id%}"> <h3><b> {{ lecture.title }} </b></h3></a>
+			    		  {% endifequal%}
+			    		  <h5><b>{% trans "Created on:" %}</b> {{lecture.created_at|date:"H:m:s"  }} </h5>
+			    		  <h5><b>{% trans "Lecturer:" %}</b> <a href="{% url profile_detail lecture.created_by%}">{{ lecture.created_by }}</a></h5>
+			    		  <p>
+			    		  		{{ lecture.description }}
+			    		  </p>  	  	
+			    	</div> 
+		    	{% endfor %}
 	    </div>
 	    {% else %}	
 	    <div class="profile_student_notes">
 	    	<h2>{% blocktrans %} <b>{{ other_user }}</b>'s notes: {% endblocktrans %}</h2>
-	    	<div class="profile_user_note_item">
-	    		  <a href="."><h3><b>Student title for note</b></h3></a>
-	    		  <h5><b>LastModified:</b> 14-05-2011</h5>
-	    		  <h5><b>Lecturer:</b> <a href=".">Hans Rosental</a></h5>
-	    		  <p>
-	    		  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum...
-	    		  </p>  	  	
-	    	</div>
-	    	<div class="profile_user_note_item">
-	    		  <a href="."><h3><b>Student title for note</b></h3></a>
-	    		  <h5><b>LastModified:</b> 14-05-2011</h5>
-	    		  <h5><b>Lecturer:</b> <a href=".">Hans Rosental</a></h5>
-	    		  <p>
-	    		  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum...
-	    		  </p>  	  	
-	    	</div>
-	    	<div class="profile_user_note_item">
-	    		  <a href="."><h3><b>Student title for note</b></h3></a>
-	    		  <h5><b>LastModified:</b> 14-05-2011</h5>
-	    		  <h5><b>Lecturer:</b> <a href=".">Hans Rosental</a></h5>
-	    		  <p>
-	    		  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum...
-	    		  </p>  	  	
-	    	</div>
-	    </div>
-	    {% endif %}
-    </div>
-    
+			    {% for lecture_note in notes %}
+			    	<div class="profile_user_note_item">
+			    		<a href="{% url lecture_detail lecture_note.lecture.id %}"> <h3><b> {{ lecture_note.lecture.title }} </b></h3></a>
+		    			<h5><b>{% trans "Last saved:" %}</b> {{ lecture_note.saved_at|date:"M/d/Y H:m:s" }}</h5>
+		    			<h5><b>{% trans "Note content:" %}</b> <a href="{% url lecture_note_details lecture_note.lecture.id lecture_note.id %}"> note details </a> </h5>
+		    			<p>
+			    			{{ lecture_note.text|striptags|truncatewords:30 }}
+			    		</p>     	  	
+			    	</div>
+			    {% endfor %}
+    	</div>
+    	{% endif %}	
 {% endblock %}
 
 

@@ -7,11 +7,10 @@ $(document).ready(function(){
     });
     	
 	$.cleditor.buttons.save.buttonClick = function(e, data){
-		//postEditorData(data.editor.$area[0].value);
 		var html_text = data.editor.$area[0].value;
-		var plain_text = html_text.replace(/(<([^>]+)>)/ig,"");
-		updateKeywords(plain_text, html_text);
-		return false;
+		postEditorData(html_text);
+		
+		return true;
 	};
 	
 	function postEditorData(editorData) {
@@ -20,14 +19,15 @@ $(document).ready(function(){
 		}, function(data) {
 			var currentTime = new Date();
 			$("#note_status").text(data + " " + currentTime.getHours() + ":" + currentTime.getMinutes());
+			
+			var html_text = editorData;
+			var plain_text = html_text.replace(/(<([^>]+)>)/ig,"");
+			updateKeywords(plain_text, html_text);
+			
 		});
 	}
-	
-	/*$("#nopsa_images").imgPreview({
-	    imgCSS: { width: 200 }
-	});*/
 
-	//updater.poll();
+	updater.poll();
 });
 
 $(function() {	
