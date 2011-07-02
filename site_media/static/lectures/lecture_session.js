@@ -5,14 +5,7 @@ $(document).ready(function(){
     	scrollToBottom($("#session_updates_container"));
         return false;
     });
-    	
-	$.cleditor.buttons.save.buttonClick = function(e, data){
-		var html_text = data.editor.$area[0].value;
-		postEditorData(html_text);
-		
-		return true;
-	};
-	
+    
 	function postEditorData(editorData) {
 		$.post("./new", { 
 			data: editorData
@@ -23,14 +16,23 @@ $(document).ready(function(){
 			var html_text = editorData;
 			var plain_text = html_text.replace(/(<([^>]+)>)/ig,"");
 			updateKeywords(plain_text, html_text);
-			
 		});
 	}
-
+	
+	$.cleditor.buttons.save.buttonClick = function(e, data){
+		var html_text = data.editor.$area[0].value;
+		postEditorData(html_text);
+		
+		return false;
+	};
+	
 	updater.poll();
 });
 
 $(function() {	
+	var removedSortables = {}
+	var createdCLEditors = {}
+	
 	function initializeDraggableDropableCanvas() {
 		$( ".session_update" ).draggable({
 			helper: "clone",
@@ -47,7 +49,10 @@ $(function() {
 			activeClass: "hover_active ",
 			accept: ".session_update",
 			drop: function( event, ui ) {
-				generateWindowAndPopulateTextArea(event, ui);
+				var updateId = generateWindowAndPopulateTextArea(event, ui);
+				var notesContainerIdReference = "notes_container_" + updateId;
+				
+				removedSortables[notesContainerIdReference] = ui;
 				ui.draggable.hide('slow');
 			}
 		});
@@ -63,6 +68,8 @@ $(function() {
 		var noteTextId = "#note_text_" + updateId;
 		
 		getNoteText(updateId, noteTextId);
+		
+		return updateId;
 	}
 	
 	function getNoteText(updateId, noteTextId) {
@@ -77,6 +84,12 @@ $(function() {
 		return "#" + elementIdName;
 	}
 		
+	function removeCLEditor(editor) {
+		editor.$area.insertBefore(editor.$main); 
+		editor.$area.removeData("cleditor"); 
+		editor.$main.remove();
+	}
+	
 	function createNoteWindow(updateId, 
 							  updateAuthor, 
 							  updateTime,
@@ -99,15 +112,31 @@ $(function() {
 								  "</div>";
 		
 		$("#lecture_session_container").append(notes_container_div).show("slow");
+		//$(document.createElement('div')).append(notes_container_div).show("slow");
 		
 		var notesContainerIdReference = convertNameToIdReference(notesContainerId);
 		var notesTextIdReference = convertNameToIdReference(noteTextId);
 				
 		addControlsToNotesContainer(notesContainerIdReference, notesTextIdReference, positionLeft, positionTop, false);
 		
-		$(notesContainerIdReference + " .notes_container_header a").bind("click", function(){
-			$('div').remove(notesContainerIdReference);
-			ui.draggable.show('slow');
+		$(notesContainerIdReference + " .notes_container_header a").bind("click", function(ui){
+			ui.preventDefault();
+			var targetWindow = $(ui.target.parentNode.parentNode);
+			var targetWindowId = targetWindow.attr('id');
+			var notesContainerIdReference = "#" + targetWindowId;
+			
+			if (createdCLEditors[notesContainerIdReference]) {
+				removeCLEditor(createdCLEditors[notesContainerIdReference][0]);
+			}
+			
+			if (removedSortables[targetWindowId]) {
+				removedSortables[targetWindowId].draggable.show('slow');
+			}
+			
+			targetWindow.draggable("destroy");
+			targetWindow.droppable("destroy");
+			
+			targetWindow.hide();
 		});
 	}
 	
@@ -162,7 +191,7 @@ $(function() {
 		    "of": $("#lecture_session_container")
 		});
 		
-		$( noteTextId ).cleditor({
+		createdCLEditors[noteContainerId] = $( noteTextId ).cleditor({
 	    	width:     "100%",
 	    	height:    "100%",
 	    	bodyStyle: "margin:4px; font:10pt Arial,Verdana; cursor:text",
