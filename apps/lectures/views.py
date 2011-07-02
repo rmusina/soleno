@@ -20,6 +20,9 @@ from django_tornado.decorator import asynchronous
 
 from nltk.corpus import wordnet as wn
 
+from soleno.tasks import set_lecture_to_finished
+from datetime import datetime, timedelta
+
 import operator
 import urllib
 import xml.dom.minidom as xmlParser
@@ -67,7 +70,11 @@ def lecture_create(request, template_name="lectures/lecture_create.html"):
     if request.method == 'POST': 
         form = LectureCreateForm(request.POST) 
         if form.is_valid():     
-            new_lecture = form.save(request.user)        
+            new_lecture = form.save(request.user) 
+
+            session_expiration_date = datetime.now() + timedelta(minutes=new_lecture.duration)     
+            set_lecture_to_finished.apply_async(args=[new_lecture.id, ], eta=session_expiration_date)
+             
             return HttpResponseRedirect(reverse('lecture_session', args=(new_lecture.id,))) 
     else:
         form = LectureCreateForm() 
@@ -129,32 +136,29 @@ def lecture_note_details(request, lecture_id, note_id, template_name="lectures/l
                               context_instance=RequestContext(request))
 
 class UpdatesController():
-    listeners = []
+    listeners = {}
     cache = []
     cache_size = 200
         
-    def wait_for_updates(self, callback, listenerId=None):
-
-        if listenerId:
-            index = 0
-            for i in xrange(len(self.cache)):
-                index = len(self.cache) - i - 1
-                if self.cache[index]["id"] == listenerId : break
-            recent = self.cache[index + 1:]
-            if recent:
-                callback(recent)
-                return
-        self.listeners.append(callback)   
+    def wait_for_updates(self, callback, listener_id=None, lecture_id=None):
+        if not lecture_id:
+            return;
         
-    def new_updates(self, updates): 
-        print "Sending new message to %r listeners" % len(self.listeners)
+        if not self.listeners.has_key(lecture_id):
+            self.listeners[lecture_id] = []
         
-        for callback in self.listeners:
+        self.listeners[lecture_id].append(callback)   
+        
+    def new_updates(self, updates, lecture_id): 
+        print "Sending new message to %r listeners" % len(self.listeners[lecture_id])
+        
+        for callback in self.listeners[lecture_id]:
             try:
                 callback(updates)
             except:
                 logging.error("Error in waiter callback", exc_info=True)
-        self.listeners = []
+                
+        self.listeners[lecture_id] = []
         self.cache.extend(updates)
         if len(self.cache) > self.cache_size:
             self.cache = self.cache[-self.cache_size:]
@@ -218,7 +222,8 @@ def lecture_session_new(request, lecture_id):
                                                 "created_by_username": request.user.username,
                                                 "created_by_avatar_src": avatar(request.user, 32), 
                                                 "saved_at": new_update.saved_at.strftime("%H:%M:%S"),
-                                                }])
+                                                }],
+                                                lecture_id)
                 
                 return HttpResponse("Save successful")
             else:
@@ -239,8 +244,8 @@ def lecture_session_updates(request, handler, lecture_id=None):
         handler.finish({'updates' : updates})
             
     if request.is_ajax() and request.method == 'POST':
-        listenerId = request.POST.get("listenerId", None)
-        updatesController.wait_for_updates(handler.async_callback(new_updates_callback), listenerId=listenerId)
+        listener_id = request.POST.get("listenerId", None)
+        updatesController.wait_for_updates(handler.async_callback(new_updates_callback), listener_id=listener_id, lecture_id=lecture_id)
 
 def get_similarity_rating(word1, pos1, word2, pos2):
     #print "similarity for " + word1 + " " + word2 
