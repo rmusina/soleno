@@ -25,9 +25,9 @@
 		        {% for lecture in lectures %}
 			        <div class="lecture_list_item">
 			    		  {% ifequal lecture.state 'a'%}			    		  
-			    		  	 <a href="{% url lecture_session lecture.id%}"> <h3><b> {{ lecture.title }} </b></h3></a><h6 class="active">active</h6>
+			    		  	 <h3><a href="{% url lecture_session lecture.id%}"> <b> {{ lecture.title }} </b></a></h3><h6 class="active">active</h6>
 			    		  {% else %}
-			    		  	 <a href="{% url lecture_detail lecture.id%}"> <h3><b> {{ lecture.title }} </b></h3></a>
+			    		  	 <h3><a href="{% url lecture_detail lecture.id%}"> <b> {{ lecture.title }} </b></a></h3>
 			    		  	 {% ifequal lecture.state 'f'%}
 			    		  	 	<h6 class="finished">finished</h6>
 			    		  	 {% else %}

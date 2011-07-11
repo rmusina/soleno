@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from django.db.models import Q
-from django.utils.translation import ugettext_lazy as _, ugettext
+from django.utils.translation import ugettext_lazy as ugettext
 
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -248,7 +248,7 @@ def lecture_session_updates(request, handler, lecture_id=None):
         updatesController.wait_for_updates(handler.async_callback(new_updates_callback), listener_id=listener_id, lecture_id=lecture_id)
 
 def get_similarity_rating(word1, pos1, word2, pos2):
-    #print "similarity for " + word1 + " " + word2 
+    print "similarity for " + word1 + " " + word2 
     
     try:
         word1_synset = wn.synsets(word1, pos=pos1.lower())
@@ -343,9 +343,18 @@ def decrement_ttl(current_lecture):
 def get_sorted_tuple(dictionary):
     return sorted(dictionary.iteritems(), key=operator.itemgetter(1), reverse=True)
 
-def process_keywords(occurrences, parts_of_speech, is_highlighted, current_lecture):
-    similarity_ratings = {}
+def get_top_lecture_keywords(current_lecture):
+    global_ratings = {}
+    session_keywords = LectureKeyTerm.objects.filter(lecture=current_lecture)
     
+    for keyword in session_keywords:        
+        global_ratings[keyword.key_term] = round(get_global_rating(keyword.similarity_rating, 
+                                                                       keyword.frequency, 
+                                                                       keyword.is_highlighted), 2)
+        
+    return get_sorted_tuple(global_ratings)[:10]    
+
+def process_keywords(occurrences, parts_of_speech, is_highlighted, current_lecture):  
     session_keywords = LectureKeyTerm.objects.filter(lecture=current_lecture)
     
     #print "in process_keywords"
@@ -353,7 +362,6 @@ def process_keywords(occurrences, parts_of_speech, is_highlighted, current_lectu
     for (expression, occurrence) in occurrences.iteritems():
         similarity_rating = get_maximum_similarity_rating(expression, parts_of_speech, session_keywords)    
         
-        similarity_ratings[expression] = round(get_global_rating(similarity_rating, occurrence, is_highlighted[expression]), 2)
         store_in_session(expression,
                          similarity_rating, 
                          occurrence, 
@@ -363,9 +371,9 @@ def process_keywords(occurrences, parts_of_speech, is_highlighted, current_lectu
     
     decrement_ttl(current_lecture)
     
-    return get_sorted_tuple(similarity_ratings)
+    return get_top_lecture_keywords(current_lecture)
 
-def getText(nodelist):
+def get_text(nodelist):
     result_list = []
     for node in nodelist:
         for textNode in node.childNodes:
@@ -383,7 +391,7 @@ def fetch_image_for_tags(tags, no_images):
     data = urllib.urlopen(query_string).read()
     
     dom = xmlParser.parseString(data)
-    images = getText(dom.getElementsByTagName("baseName"))
+    images = get_text(dom.getElementsByTagName("baseName"))
     
     fetched_images = []
     for image in images:

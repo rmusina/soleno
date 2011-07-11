@@ -3,6 +3,7 @@
 html, body {
     height: 100%;
 }
+
 body {
     background: #666 url(../../images/texture.png) repeat scroll 0px 0px;
     margin: 0;
@@ -62,6 +63,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 20%;
     margin-right: 20%;
     padding: 10px;
+}
+
+#body a {
+	text-decoration: none;
 }
 
 .wrapper {
@@ -237,6 +242,7 @@ ul#messages li {
     margin: 3px;
     border: 1px solid #BC9;
 }
+
 ul#messages li a {
     float: right;
     color: #693;

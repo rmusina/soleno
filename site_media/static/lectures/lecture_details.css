@@ -1,15 +1,14 @@
 #lecture_info {
 	float: left;
 	width: 50%;
-	height: 400px;
+	height: 450px;
 	border-right: 1px solid #666;
 	overflow-y: auto;
 	overflow-x: hidden; 
 }
 
 #lecture_notes {
-	width: 50%;
-	height: 400px;
+	height: 450px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	padding-left: 10px;
