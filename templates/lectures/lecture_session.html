@@ -15,7 +15,7 @@
 
 {% block body %}
 	<div id="lecture_session_slider">
-		<div id="lecture_id"> <h1>Id: <b>{{ lecture.id }}</b><h1></div>
+		<div id="lecture_id"> <h1>Id: <b>{{ lecture.id }}</b></h1></div>
 		<h1> {{ lecture.title }} </h1>
 		<ul id="session_updates_container">
 			{% for update in updates_list %}
@@ -43,7 +43,6 @@
 			<div class="textarea_div">	
 				<textarea class="note_text">{{ user_text }}</textarea>
 				<div id="note_status">
-					
 				</div>
 			</div>				
 		</div>

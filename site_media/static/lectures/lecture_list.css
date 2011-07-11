@@ -5,22 +5,19 @@
 	border-right: 1px solid #666;
 	overflow-y: auto;
 	overflow-x: hidden; 
+	margin-right: 10px;
 }
 
 #lecture_search_container {
-	position:relative;
-	width: 35%;
 	overflow-y: auto;
 	overflow-x: hidden;
 	height: 600px;
-	padding-left: 10px;
 }
 
-#lecture_list_container b{
+#lecture_list_container b {
 	color: #EB3800;
 	font-weight: normal;
 }
-
 
 #lecture_list_container h5 {
 	padding-left: 30px;

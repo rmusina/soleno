@@ -54,9 +54,9 @@
 		    	{% for lecture in lectures %}
 			    	<div class="profile_user_note_item">
 			    		  {% ifequal lecture.state 'a'%}			    		  
-			    		  	 <a href="{% url lecture_session lecture.id%}"> <h3><b> {{ lecture.title }} </b></h3></a>
+			    		  	 <h3><a href="{% url lecture_session lecture.id%}"> <b> {{ lecture.title }} </b></a></h3>
 			    		  {% else %}
-			    		  	 <a href="{% url lecture_detail lecture.id%}"> <h3><b> {{ lecture.title }} </b></h3></a>
+			    		  	 <h3><a href="{% url lecture_detail lecture.id%}"> <b> {{ lecture.title }} </b></a></h3>
 			    		  {% endifequal%}
 			    		  <h5><b>{% trans "Created on:" %}</b> {{lecture.created_at|date:"H:m:s"  }} </h5>
 			    		  <h5><b>{% trans "Lecturer:" %}</b> <a href="{% url profile_detail lecture.created_by%}">{{ lecture.created_by }}</a></h5>
@@ -71,7 +71,7 @@
 	    	<h2>{% blocktrans %} <b>{{ other_user }}</b>'s notes: {% endblocktrans %}</h2>
 			    {% for lecture_note in notes %}
 			    	<div class="profile_user_note_item">
-			    		<a href="{% url lecture_detail lecture_note.lecture.id %}"> <h3><b> {{ lecture_note.lecture.title }} </b></h3></a>
+			    		<h3><a href="{% url lecture_detail lecture_note.lecture.id %}"> <b> {{ lecture_note.lecture.title }} </b></a></h3>
 		    			<h5><b>{% trans "Last saved:" %}</b> {{ lecture_note.saved_at|date:"M/d/Y H:m:s" }}</h5>
 		    			<h5><b>{% trans "Note content:" %}</b> <a href="{% url lecture_note_details lecture_note.lecture.id lecture_note.id %}"> note details </a> </h5>
 		    			<p>
@@ -81,6 +81,7 @@
 			    {% endfor %}
     	</div>
     	{% endif %}	
+    </div>
 {% endblock %}
 
 
