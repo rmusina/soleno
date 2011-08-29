@@ -264,8 +264,6 @@ def get_similarity_rating(word1, pos1, word2, pos2):
         return 1
 
 def search_in_session(expression, session_keywords):
-    #print "searching for " + expression 
-        
     try:
         return session_keywords.get(key_term=expression)
     except: 
