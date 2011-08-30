@@ -307,7 +307,7 @@ this.imagePreview = function(){
 function updateKeywords(plain_text, html_text) {
 	var keyterms = getKeyTerms(plain_text, html_text);
 	
-	$("#toolbox_accordion").append("<div id='loading_mask' style='background:url(" + STATIC_URL + "images/ajax-loader.gif) center center no-repeat; position: absolute; z-index: 900; left: 0pt; top: 0pt; right: 0pt; bottom: 0pt;'>" +
+	$("#toolbox_container").append("<div id='loading_mask'>" +
 								   "</div>");
 	
 	$.post("./keywords", {

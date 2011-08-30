@@ -221,3 +221,18 @@
 	list-style: none;
 	padding-left: 5px;
 }
+
+#loading_mask {
+	background: #333333 url(../images/ajax-loader.gif) center center no-repeat; 
+	opacity:0.55; 
+	filter:alpha(opacity=55); 
+	position: absolute; 
+	z-index: 900; 
+	left: 3px; 
+	top: 33px; 
+	right: 3px; 
+	bottom: 17px;
+	-moz-border-radius: 5px;
+	-webkit-border: 5px;
+	border-radius: 5px;
+}
